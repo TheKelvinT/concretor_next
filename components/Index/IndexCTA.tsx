@@ -1,10 +1,10 @@
-import React from "react";
-import Button from "@/components/Button";
-import Link from "next/link";
-import BlackLogo from "@/assets/nota-logo-black.png";
-import Image from "next/image";
-import { PortableText } from "@portabletext/react";
-type Props = { content: any };
+import React from "react"
+import Button from "@/components/Button"
+import Link from "next/link"
+import BlackLogo from "@/assets/nota-logo-black.png"
+import Image from "next/image"
+import { PortableText } from "@portabletext/react"
+type Props = { content: any }
 
 const IndexCTA = ({ content }: Props) => {
   return (
@@ -21,18 +21,18 @@ const IndexCTA = ({ content }: Props) => {
         <div className="text-center space-y-4 text-main">
           <h3>{content.homeSectionOne.title}</h3>
           <div className="text-xs leading-5">
-            <PortableText value={content.homeSectionOne.description} />
+            <PortableText value={content?.homeSectionOne.description} />
           </div>
         </div>
         <Link
-          href={content.homeSectionOne.callToAction.routes}
+          href={content?.homeSectionOne.callToAction.routes}
           className="mt-10"
         >
-          <Button title={content.homeSectionOne.callToAction.buttonText} />
+          <Button title={content?.homeSectionOne.callToAction.buttonText} />
         </Link>
       </div>
     </section>
-  );
-};
+  )
+}
 
-export default IndexCTA;
+export default IndexCTA

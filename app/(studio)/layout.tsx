@@ -1,11 +1,11 @@
-"use client";
+"use client"
 
-import "../globals.css";
-import { Inter } from "next/font/google";
-import localFont from "next/font/local";
-import Navbar from "@/components/Navbar";
-import Footer from "@/components/Footer";
-import { useRouter } from "next/navigation";
+import "../globals.css"
+import { Inter } from "next/font/google"
+import localFont from "next/font/local"
+import Navbar from "@/components/Navbar"
+import Footer from "@/components/Footer"
+import { useRouter } from "next/navigation"
 // const inter = Inter({ subsets: ["latin"] });
 // const biro = localFont({
 //   src: [
@@ -31,20 +31,20 @@ import { useRouter } from "next/navigation";
 //   variable: "--font-gothic",
 // });
 
-export const metadata = {
-  title: "Nota Cafe",
-  description: "Nota Cafe | Home is a Feeling",
-};
+// export const metadata = {
+//   title: "Nota Cafe",
+//   description: "Nota Cafe | Home is a Feeling",
+// };
 
 export default function RootLayout({
   children,
 }: {
-  children: React.ReactNode;
+  children: React.ReactNode
 }) {
-  const router = useRouter();
+  const router = useRouter()
   return (
     <html lang="en">
       <body>{children}</body>
     </html>
-  );
+  )
 }
