@@ -1,5 +1,5 @@
-const { url } = require("inspector");
-const defaultTheme = require("tailwindcss/defaultTheme");
+const { url } = require("inspector")
+const defaultTheme = require("tailwindcss/defaultTheme")
 
 /** @type {import('tailwindcss').Config} */
 module.exports = {
@@ -16,7 +16,7 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        primary: "#F3F3EC",
+        primary: "#038885",
         "primary-100": "#dbdbd4",
         secondary: "#30332A",
         main: "#595D3C",
@@ -37,4 +37,4 @@ module.exports = {
   },
 
   plugins: [],
-};
+}

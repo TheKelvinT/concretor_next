@@ -1,10 +1,10 @@
-import Link from "next/link";
-import React from "react";
-import FooterLogo from "@/assets/footer-logo.png";
-import Image from "next/image";
+import Link from "next/link"
+import React from "react"
+import FooterLogo from "@/assets/footer-logo.png"
+import Image from "next/image"
 function Footer() {
   return (
-    <footer className=" py-20 px-4 mx-auto bg-secondary flex flex-col justify-center items-center text-white">
+    <footer className=" py-20 px-4 mx-auto bg-primary flex flex-col justify-center items-center text-white">
       <div className="flex gap-x-12 font-inter text-xs flex-col md:flex-row text-center gap-6">
         <Link href="/about">ABOUT</Link>
         <Link href="/menu">MENU</Link>
@@ -41,7 +41,7 @@ function Footer() {
         </p>
       </div>
     </footer>
-  );
+  )
 }
 
-export default Footer;
+export default Footer
