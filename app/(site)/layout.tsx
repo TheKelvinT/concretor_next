@@ -4,32 +4,33 @@ import "../globals.css"
 import { Inter } from "next/font/google"
 import localFont from "next/font/local"
 import Navbar from "@/components/Navbar"
-import Footer from "@/components/Footer"
 import { useRouter } from "next/navigation"
-const inter = Inter({ subsets: ["latin"] })
-const biro = localFont({
-  src: [
-    {
-      path: "../../public/fonts/BiroScriptPlus.ttf",
-      weight: "400",
-    },
-  ],
-  variable: "--font-biro",
-})
+import Footer from "@/components/Footer"
 
-const gothic = localFont({
-  src: [
-    {
-      path: "../../public/fonts/CenturyGothic.ttf",
-      weight: "400",
-    },
-    {
-      path: "../../public/fonts/gothic.ttf",
-      weight: "700",
-    },
-  ],
-  variable: "--font-gothic",
-})
+// const inter = Inter({ subsets: ["latin"] })
+// const biro = localFont({
+//   src: [
+//     {
+//       path: "../../public/fonts/BiroScriptPlus.ttf",
+//       weight: "400",
+//     },
+//   ],
+//   variable: "--font-biro",
+// })
+
+// const gothic = localFont({
+//   src: [
+//     {
+//       path: "../../public/fonts/CenturyGothic.ttf",
+//       weight: "400",
+//     },
+//     {
+//       path: "../../public/fonts/gothic.ttf",
+//       weight: "700",
+//     },
+//   ],
+//   variable: "--font-gothic",
+// })
 
 // export const metadata = {
 //   title: "Nota Cafe",
@@ -45,7 +46,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${inter.className} ${biro.variable} ${gothic.variable}`}
+        // className={`${inter.className} ${biro.variable} ${gothic.variable}`}
       >
         <Navbar />
 

@@ -28,6 +28,8 @@ module.exports = {
         biro: ["var(--font-biro)", "san-serif"],
         marcellus: ["Marcellus", "san-serif"],
         gothic: ["var(--font-gothic)", "san-serif"],
+        montserrat: ["Montserrat", "san-serif"],
+        merriweather: ["Merriweather", "san-serif"]
       },
     },
     screens: {

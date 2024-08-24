@@ -1,6 +1,6 @@
 import Image from "next/image";
 import React, { useState, Fragment, useRef, useEffect } from "react";
-import Logo from "@/assets/Nota-Logo.png";
+// import Logo from "@/assets/Nota-Logo.png";
 import { usePathname } from "next/navigation";
 import Link from "next/link";
 import { Bars3Icon, BellIcon, XMarkIcon } from "@heroicons/react/24/outline";
@@ -73,12 +73,12 @@ function Navbar() {
               <div className="flex flex-shrink-0 items-center">
                 <div className="hidden sm:block">
                   <Link href="/">
-                    <Image src={Logo} alt="nota-logo" />
+                    {/* <Image src={Logo} alt="nota-logo" /> */}
                   </Link>
                 </div>
                 <div className="sm:hidden">
                   <Link href="/">
-                    <Image src={Logo} alt="nota-logo" />
+                    {/* <Image src={Logo} alt="nota-logo" /> */}
                   </Link>
                 </div>
               </div>
