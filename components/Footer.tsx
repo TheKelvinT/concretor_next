@@ -2,21 +2,27 @@ import Link from "next/link"
 import React from "react"
 import FooterLogo from "@/assets/footer-logo.png"
 import Image from "next/image"
+import Button from "./Button"
+import { useRouter } from 'next/navigation'
 function Footer() {
+  const router = useRouter()
+  const onClick = () => {
+    router.push('/dashboard')
+  }
   return (
-    <footer className="bg-primary flex flex-col justify-center items-center text-white">
-      <div className="flex md:flex-row justify-between items-start gap-40 py-16 align-top">
+    <footer className="bg-primary flex flex-col justify-center text-white items-center">
+      <div className="footer-container max-w-[1440px]">
         <div>
           <h2 className="text-[32px] font-merriweather font-bold">CONCRETOR</h2>
-          <p className = "text-[20px] font-merriweather text-black">Engineering and Laboratories SDN BHD</p>
-          <p className = "text-[12px] font-montserrat text-black">202201044579 (1490276-W)</p>
-          <p className = "text-[12px] font-montserrat text-black">CIDB No. 0120230221-SL114191</p>
-          <p className = "text-[12px] font-montserrat text-black">SPAN No. SPAN/EKS/(PT)/800-2B/2/23/133</p>
+          <p className = "text-xl font-merriweather text-black">Engineering and Laboratories SDN BHD</p>
+          <p>202201044579 (1490276-W)</p>
+          <p>CIDB No. 0120230221-SL114191</p>
+          <p>SPAN No. SPAN/EKS/(PT)/800-2B/2/23/133</p>
         </div>
 
         <div>
-          <h3 className="text-[14px] font-montserrat font-bold">Links</h3>
-          <div className="flex flex-col text-[14px] font-montserrat">
+          <h3 className="text-[14px]  font-bold">Links</h3>
+          <div className="flex flex-col text-[14px] ">
             <br />
             <Link href="/about">About</Link>
             <Link href="/blog">Blog</Link>
@@ -25,17 +31,18 @@ function Footer() {
         </div>
 
         <div>
-          <h3 className="text-[14px] font-montserrat font-bold">Follow us</h3>
+          <h3 className="text-[14px]  font-bold hidden md:block">Follow us</h3>
+          <Button title={"ClickMe"} onClick={onClick}/>
         </div>
 
         <div>
-          <h3 className="text-[14px] font-montserrat font-bold">Contact us</h3>
+          <h3 className="text-[14px] font-bold">Contact us</h3>
           <br />
-          <p className="text-[14px] font-montserrat">63, Jalan TPP 1/1, Taman</p>
-          <p className="text-[14px] font-montserrat">Perindustrian Puchong, </p>
-          <p className="text-[14px] font-montserrat">47100 Puchong, Selangor</p>
+          <p>63, Jalan TPP 1/1, Taman</p>
+          <p>Perindustrian Puchong, </p>
+          <p>47100 Puchong, Selangor</p>
           <br />
-          <p className="text-[14px] font-montserrat">+6012 234 4444</p>
+          <p>+6012 234 4444</p>
         </div>
       </div>
 

@@ -24,10 +24,10 @@ module.exports = {
         light: "#F5F5F5",
       },
       fontFamily: {
-        inter: ["Inter", "san-serif"],
-        biro: ["var(--font-biro)", "san-serif"],
-        marcellus: ["Marcellus", "san-serif"],
-        gothic: ["var(--font-gothic)", "san-serif"],
+        // inter: ["Inter", "san-serif"],
+        // biro: ["var(--font-biro)", "san-serif"],
+        // marcellus: ["Marcellus", "san-serif"],
+        // gothic: ["var(--font-gothic)", "san-serif"],
         montserrat: ["Montserrat", "san-serif"],
         merriweather: ["Merriweather", "san-serif"]
       },

@@ -46,7 +46,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        // className={`${inter.className} ${biro.variable} ${gothic.variable}`}
+        className="font-montserrat"
       >
         <Navbar />
 
