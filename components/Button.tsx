@@ -42,32 +42,40 @@
 
 // export default Button;
 
-import React from "react";
+import React from "react"
 
 interface Props {
-  title: string;
-  onClick?: () => void;
-  width?: string;
-  loading?: boolean;
-  padding?: string;
-  styleType?: "green" | "white"; // New prop to handle styling
+  title: string
+  onClick?: () => void
+  width?: string
+  loading?: boolean
+  padding?: string
+  styleType?: "green" | "white" // New prop to handle styling
 }
 
-function Button({ title, onClick, width, loading, padding, styleType = "green" }: Props) {
-  const buttonStyles = styleType === "green"
-    ? "bg-primary text-white border-[#038885]"
-    : "bg-white text-[#038885] border-[#038885]";
+function Button({
+  title,
+  onClick,
+  width,
+  loading,
+  padding,
+  styleType = "green",
+}: Props) {
+  const buttonStyles =
+    styleType === "green"
+      ? "bg-primary text-white border-[#038885]"
+      : "bg-white text-[#038885] border-[#038885]"
 
   return (
     <button
-      className={`relative box-border inline-flex ${
+      className={`relative inline-flex ${
         width ? width : "w-auto"
-      } ${padding} cursor-pointer items-center justify-center overflow-hidden border rounded-[20px] font-bold text-[18px] ${buttonStyles} px-6 py-3 transition-all duration-300 focus:outline-none shadow-2xl`}
+      } ${padding} cursor-pointer shadow-md shadow-black/50  items-center justify-center overflow-hidden border rounded-[20px] font-bold text-[18px] ${buttonStyles} px-6 py-3 transition-all duration-300 focus:outline-none `}
       onClick={onClick}
     >
       {loading ? "Loading..." : title}
     </button>
-  );
+  )
 }
 
-export default Button;
+export default Button
