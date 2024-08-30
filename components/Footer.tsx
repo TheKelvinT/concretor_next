@@ -32,7 +32,7 @@ function Footer() {
 
         <div>
           <h3 className="text-[14px]  font-bold hidden md:block">Follow us</h3>
-          <Button title={"ClickMe"} onClick={onClick}/>
+          <Button title={"ClickMe"} styleType="green" onClick={onClick}/>
         </div>
 
         <div>
