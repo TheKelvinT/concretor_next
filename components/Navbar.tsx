@@ -49,7 +49,7 @@ function Navbar() {
   return(
     <div className = {`relative z-50 text-white py-4 overflow-hidden ${"bg-primary"}`}>
       <div className = "bg-transparent">
-        <div className = "mx-auto max-w-7xl px-2 sm:px-6 lg:px-8">
+        <div className = "mx-auto max-w-7xl px-2 px-16">
           <div className = "relative flex items-center h-84 justify-between">
             <div className = "hidden md:block">
               {leftNavigation.map((item) => (

@@ -59,29 +59,18 @@ export default function Home() {
         </div>
       </div>
 
-      <div className="flex justify-center">
-        <div className="w-full max-w-[1440px]">
-          <div className="grid gap-10 md:grid-cols-2 md:items-center py-16 px-16">
+      {/* <div className="flex justify-center"> */}
+        {/* <div className="w-full max-w-[1440px]"> */}
+          <div className="flex justify-center w-full max-w-[1440px] mx-auto grid gap-10 md:grid-cols-2 md:items-center py-16 px-16">
             <div className="flex flex-col justify-center items-center md:items-start">
-              <h2 className="font-bold mb-4 text-center md:text-left">
-                Solving Construction and <br /> Renovation Challenges with{" "}
-                <br /> Expertise
+              <h2 className="font-bold mb-4 text-center md:text-left w-full">
+                Solving Construction and Renovation Challenges with Expertise
               </h2>
-              <p className="text-center md:text-left">
-                At CONCRETOR, we specialize in providing innovative solutions to
-                <br /> construction and renovation challenges. With our
-                expertise and
-                <br /> commitment to excellence, we are dedicated to delivering
-                high-
-                <br /> quality results that exceed our clients' expectations.
-                Whether it's a
-                <br /> small renovation project or a large-scale construction
-                endeavor, we
-                <br /> have the knowledge and skills to tackle any challenge.
-                Our unique
-                <br /> approach ensures that every project is completed
-                efficiently, on time,
-                <br /> and within budget.
+              <p className="text-center md:text-left w-full">
+                At CONCRETOR, we specialize in providing innovative solutions to construction and renovation challenges. With our expertise and
+                commitment to excellence, we are dedicated to delivering high-quality results that exceed our clients' expectations.
+                Whether it's a small renovation project or a large-scale construction endeavor, we have the knowledge and skills to tackle any challenge.
+                Our unique approach ensures that every project is completed efficiently, on time, and within budget.
               </p>
 
               <div className="flex flex-row gap-4 mt-4">
@@ -159,7 +148,7 @@ export default function Home() {
           </div>
 
           {/* "Our services" section */}
-          <div className="flex flex-col justify-center items-center py-16 px-16">
+          <div className="flex flex-col justify-center items-center py-16 px-16 w-full max-w-[1440px] mx-auto">
             <h2 className="font-bold mb-10">Our Services</h2>
 
             <div className="grid grid-cols-1 gap-8 md:grid-cols-4 md:grid-rows-2">
@@ -282,11 +271,81 @@ export default function Home() {
               </div>
             </div>
 
-            <p className="text-lg mt-10">
+            <p className="text-lg mt-10 mb-4">
               Need expert solutions for your next project? Let's discuss.
             </p>
+
+            <Button title={"Contact Us"} onClick={onClickContactUs}/>
           </div>
-        </div>
+
+          {/* Latest Articles section */}
+
+          <div className = "flex flex-col justify-center items-center py-16 px-16">
+            <h2 className = "font-bold mb-10 text-center">Latest Articles</h2>
+            <div className = "flex flex-col md:flex-row justify-between gap-x-12">
+                <div>
+                    <Image
+                        src={heroimg}
+                        alt="hero image"
+                        width={400}
+                        height={300}
+                        className="mb-2.5 object-cover"
+                    />
+                    <div className = "flex flex-row gap-x-7 mb-2.5 text-[#038885]">
+                        <p>Innovation</p>
+                        <p>Project Management</p>
+                    </div>
+                    <div className = "w-[400px]">
+                        <p className = "text-2xl font-bold mb-7">Experience the Difference <br/> with CONCRETOR , you will <br/> not regret it</p>
+                        <p className = "mb-4">At CONCRETOR, we pride ourselves on delivering quality craftsmanship, completing projects on time, and ensuring customer satisfaction. With our <br/>expertise and dedication, we guarantee exception...</p>
+                    </div>
+                    <a href = "" className="text-[#038885]">Read More</a>
+                </div>
+
+                <div>
+                    <Image
+                        src={heroimg}
+                        alt="hero image"
+                        width={400}
+                        height={300}
+                        className="mb-2.5 object-cover"
+                    />
+                    <div className = "flex flex-row gap-x-7 mb-2.5 text-[#038885]">
+                        <p>Innovation</p>
+                        <p>Project Management</p>
+                    </div>
+                    <div className = "w-[400px]">
+                        <p className = "text-2xl font-bold mb-7">Experience the Difference <br/> with CONCRETOR , you will <br/> not regret it</p>
+                        <p className = "mb-4">At CONCRETOR, we pride ourselves on delivering quality craftsmanship, completing projects on time, and ensuring customer satisfaction. With our <br/>expertise and dedication, we guarantee exception...</p>
+                    </div>
+                    <a href = "" className="text-[#038885]">Read More</a>
+                </div>
+
+                <div>
+                    <Image
+                        src={heroimg}
+                        alt="hero image"
+                        width={400}
+                        height={300}
+                        className="mb-2.5 object-cover"
+                    />
+                    <div className = "flex flex-row gap-x-7 mb-2.5 text-[#038885]">
+                        <p>Innovation</p>
+                        <p>Project Management</p>
+                    </div>
+                    <div className = "w-[400px]">
+                        <p className = "text-2xl font-bold mb-7">Experience the Difference <br/> with CONCRETOR , you will <br/> not regret it</p>
+                        <p className = "mb-4">At CONCRETOR, we pride ourselves on delivering quality craftsmanship, completing projects on time, and ensuring customer satisfaction. With our <br/>expertise and dedication, we guarantee exception...</p>
+                    </div>
+                    <a href = "" className="text-[#038885]">Read More</a>
+                </div>
+            </div>
+          </div>
+        {/* </div> */}
+      {/* </div> */}
+      <div className = "bg-[#EAE7E7] flex flex-row w-full h-[164px] items-center justify-center gap-x-24">
+        <p className="text-lg font-bold">Need expert solutions for your next project?</p>
+        <Button title={"Contact Us"} onClick={onClickContactUs}/>
       </div>
     </div>
   )
