@@ -1,26 +1,23 @@
-import Image from "next/image";
-import React, { useState, Fragment, useRef, useEffect } from "react";
-import { usePathname } from "next/navigation";
-import Link from "next/link";
-import { Bars3Icon, BellIcon, XMarkIcon } from "@heroicons/react/24/outline";
-import { motion } from "framer-motion";
+import Image from "next/image"
+import React, { useState, Fragment, useRef, useEffect } from "react"
+import { usePathname } from "next/navigation"
+import Link from "next/link"
+import { Bars3Icon, BellIcon, XMarkIcon } from "@heroicons/react/24/outline"
+import { motion } from "framer-motion"
 import { useRouter } from "next/navigation"
 import Button from "@/components/Button"
 
-const leftNavigation = [
-  { name: "CONCRETOR", href: "/app" }
-]
-
+const leftNavigation = [{ name: "CONCRETOR", href: "/" }]
 
 const rightNavigation = [
   { name: "About", href: "/about" },
-  { name: "Services", href: "/services" },
+  { name: "Services", href: "/#services" },
   { name: "Blog", href: "/blog" },
-  { name: "Contact", href: "/contact" }
+  { name: "Contact", href: "/contact" },
 ]
 
 function classNames(...classes: string[]) {
-  return classes.filter(Boolean).join(" ");
+  return classes.filter(Boolean).join(" ")
 }
 function Navbar() {
   const router = useRouter()
@@ -36,30 +33,25 @@ function Navbar() {
   useEffect(() => {
     let handler = (e: { target: any }) => {
       if (menuRef?.current && !menuRef?.current?.contains(e.target)) {
-        setOpen(false);
+        setOpen(false)
       }
-    };
+    }
 
-    document.addEventListener("mousedown", handler);
+    document.addEventListener("mousedown", handler)
 
     return () => {
-      document.removeEventListener("mousedown", handler);
-    };
-  });
+      document.removeEventListener("mousedown", handler)
+    }
+  })
 
-  const isBlogPath =
-    pathname === "/blog" ||
-    pathname === "/reservations" ||
-    pathname === "/admin" ||
-    pathname === "/careers";
-  const bgColor = isBlogPath ? "bg-secondary" : "bg-transparent";
-
-  return(
-    <div className = {`relative z-50 text-white py-4 overflow-hidden ${"bg-primary"}`}>
-      <div className = "bg-transparent">
-        <div className = "mx-auto max-w-7xl px-2 px-16">
-          <div className = "relative flex items-center h-84 justify-between">
-            <div className = "hidden md:block">
+  return (
+    <div
+      className={`relative z-50 text-white py-4 overflow-hidden ${"bg-primary"}`}
+    >
+      <div className="bg-transparent">
+        <div className="mx-auto max-w-7xl px-16">
+          <div className="relative flex items-center h-84 justify-between">
+            <div className="hidden md:block">
               {leftNavigation.map((item) => (
                 <a
                   key={item.name}
@@ -74,11 +66,7 @@ function Navbar() {
             <div className="hidden md:block">
               <div className="flex items-center gap-x-10">
                 {rightNavigation.map((item) => (
-                  <a
-                    key={item.name}
-                    href={item.href}
-                    className="text-lg"
-                  >
+                  <a key={item.name} href={item.href} className="text-lg">
                     {item.name}
                   </a>
                 ))}
@@ -89,7 +77,7 @@ function Navbar() {
         </div>
       </div>
     </div>
-  );
-  }
+  )
+}
 
-export default Navbar;
+export default Navbar
