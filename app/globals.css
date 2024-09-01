@@ -1,21 +1,20 @@
-@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Merriweather:ital,wght@0,300;0,400;0,700;0,900;1,300;1,400;1,700;1,900&display=swap');
-
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Merriweather:ital,wght@0,300;0,400;0,700;0,900;1,300;1,400;1,700;1,900&display=swap");
 
 body {
-  font-family: 'Montserrat', sans-serif;
+  font-family: "Montserrat", sans-serif;
 }
 
 body {
-  font-family: 'Merriweather', sans-serif;
+  font-family: "Merriweather", sans-serif;
 }
 
 p {
-  @apply text-sm
+  @apply text-sm;
 }
 
 .footer-container {
-  @apply flex md:flex-row justify-between items-start py-16 px-16 align-top flex-col w-full
+  @apply flex md:flex-row justify-between items-start py-16 px-16 align-top flex-col w-full;
 }
 
 @tailwind base;
@@ -23,11 +22,12 @@ p {
 
 html,
 body {
-  width: 100%
+  width: 100%;
+  scroll-behavior: smooth;
 }
 
 h2 {
-  @apply font-montserrat text-4xl
+  @apply font-montserrat text-4xl;
 }
 
 @tailwind utilities;
@@ -51,16 +51,14 @@ input::-webkit-inner-spin-button {
   margin: 0;
 }
 
-
 #date {
   font-size: 12px;
   color: #333333;
   font-family: "Inter";
 }
 
-
 ::placeholder {
-  color: rgba(0, 0, 0, 0.3)
+  color: rgba(0, 0, 0, 0.3);
 }
 
 .swiper-slide {
