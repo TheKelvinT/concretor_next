@@ -343,8 +343,8 @@ export default function Home() {
           </div>
         {/* </div> */}
       {/* </div> */}
-      <div className = "bg-[#EAE7E7] flex flex-row w-full h-[164px] items-center justify-center gap-x-24">
-        <p className="text-lg font-bold">Need expert solutions for your next project?</p>
+      <div className = "bg-[#EAE7E7] flex flex-col md:flex-row w-full h-[164px] items-center justify-center gap-x-24">
+        <p className="text-lg font-bold sm:mb-5">Need expert solutions for your next project?</p>
         <Button title={"Contact Us"} onClick={onClickContactUs}/>
       </div>
     </div>
