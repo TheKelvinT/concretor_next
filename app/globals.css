@@ -14,7 +14,7 @@ p {
 }
 
 .footer-container {
-  @apply flex md:flex-row justify-between items-start py-16 px-16 align-top flex-col w-full;
+  @apply flex md:flex-row justify-between items-start pt-16 px-16 align-top flex-col w-full;
 }
 
 @tailwind base;

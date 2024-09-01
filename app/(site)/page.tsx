@@ -61,34 +61,36 @@ export default function Home() {
 
       {/* <div className="flex justify-center"> */}
       {/* <div className="w-full max-w-[1440px]"> */}
-      <div className="flex justify-center w-full max-w-[1440px] mx-auto grid gap-10 md:grid-cols-2 md:items-center py-16 px-16">
-        <div className="flex flex-col justify-center items-center md:items-start">
-          <h2 className="font-bold mb-4 text-center md:text-left w-full">
-            Solving Construction and Renovation Challenges with Expertise
-          </h2>
-          <p className="text-center md:text-left w-full">
-            At CONCRETOR, we specialize in providing innovative solutions to
-            construction and renovation challenges. With our expertise and
-            commitment to excellence, we are dedicated to delivering
-            high-quality results that exceed our clients' expectations. Whether
-            it's a small renovation project or a large-scale construction
-            endeavor, we have the knowledge and skills to tackle any challenge.
-            Our unique approach ensures that every project is completed
-            efficiently, on time, and within budget.
-          </p>
+      <div className="w-full py-16 px-16 flex justify-center ">
+        <div className="max-w-[1440px] flex gap-10 items-center justify-center">
+          <div className="md:basis-1/2 ">
+            <h2 className="font-bold mb-4 text-center md:text-left w-full">
+              Solving Construction and Renovation Challenges with Expertise
+            </h2>
+            <p className="text-center md:text-left w-full">
+              At CONCRETOR, we specialize in providing innovative solutions to
+              construction and renovation challenges. With our expertise and
+              commitment to excellence, we are dedicated to delivering
+              high-quality results that exceed our clients' expectations.
+              Whether it's a small renovation project or a large-scale
+              construction endeavor, we have the knowledge and skills to tackle
+              any challenge. Our unique approach ensures that every project is
+              completed efficiently, on time, and within budget.
+            </p>
 
-          <div className="flex flex-row gap-4 mt-4">
-            <Button title={"Contact Us"} onClick={onClickContactUs} />
-            <Button title={"Learn More"} onClick={onClickContactUs} />
+            <div className="flex justify-center md:justify-start gap-4 mt-4">
+              <Button title={"Contact Us"} onClick={onClickContactUs} />
+              <Button title={"Learn More"} onClick={onClickContactUs} />
+            </div>
           </div>
-        </div>
 
-        <div className="flex justify-center hidden md:block">
-          <Image
-            src={construction}
-            alt="Construction image"
-            className="w-[689px] h-[430px] rounded-lg"
-          />
+          <div className="hidden md:block basis-1/2 h-[425px]">
+            <Image
+              src={construction}
+              alt="Construction image"
+              className="object-cover rounded-lg h-full"
+            />
+          </div>
         </div>
       </div>
 
@@ -283,7 +285,7 @@ export default function Home() {
 
       <div className="flex flex-col justify-center items-center py-16 px-16">
         <h2 className="font-bold mb-10 text-center">Latest Articles</h2>
-        <div className="flex flex-col md:flex-row justify-between gap-x-12">
+        <div className="flex gap-12 justify-center flex-wrap">
           <div>
             <Image
               src={heroimg}
@@ -356,14 +358,12 @@ export default function Home() {
             </div>
             <div className="w-[400px]">
               <p className="text-2xl font-bold mb-7">
-                Experience the Difference <br /> with CONCRETOR , you will{" "}
-                <br /> not regret it
+                Experience the Difference
               </p>
               <p className="mb-4">
                 At CONCRETOR, we pride ourselves on delivering quality
                 craftsmanship, completing projects on time, and ensuring
                 customer satisfaction. With our <br />
-                expertise and dedication, we guarantee exception...
               </p>
             </div>
             <a href="" className="text-[#038885]">
