@@ -280,10 +280,10 @@ export default function Home() {
 
       {/* Latest Articles section */}
 
-      <div className="flex flex-col justify-center items-center px-5 py-16 md:px-16">
+      <div className="flex flex-col justify-center items-center px-5 py-16 md:px-16 ">
         <h2 className="font-bold mb-10 text-center">Latest Articles</h2>
-        <div className="flex gap-12 justify-center flex-wrap ">
-          <div>
+        <div className="flex gap-12 justify-center flex-wrap">
+          <div className="max-w-[400px]">
             <div>
               <Image
                 src={heroimg}
@@ -313,7 +313,7 @@ export default function Home() {
             </a>
           </div>
 
-          <div>
+          <div className="max-w-[400px]">
             <div>
               <Image
                 src={heroimg}
@@ -343,7 +343,7 @@ export default function Home() {
             </a>
           </div>
 
-          <div>
+          <div className="max-w-[400px]">
             <div>
               <Image
                 src={heroimg}
