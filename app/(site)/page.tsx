@@ -282,22 +282,23 @@ export default function Home() {
 
       <div className="flex flex-col justify-center items-center px-5 py-16 md:px-16">
         <h2 className="font-bold mb-10 text-center">Latest Articles</h2>
-        <div className="flex gap-12 justify-center flex-wrap">
+        <div className="flex gap-12 justify-center flex-wrap ">
           <div>
-            <Image
-              src={heroimg}
-              alt="hero image"
-              width={400}
-              height={300}
-              className="mb-2.5 object-cover"
-            />
+            <div>
+              <Image
+                src={heroimg}
+                alt="hero image"
+                height={300}
+                className="mb-2.5 object-cover w-full h-full"
+              />
+            </div>
             <div className="flex flex-row gap-x-7 mb-2.5 text-[#038885]">
               <p>Innovation</p>
               <p>Project Management</p>
             </div>
-            <div className="w-[400px]">
+            <div className="">
               <p className="text-2xl font-bold mb-7">
-                Experience the Difference <br /> with CONCRETOR , you will{" "}
+                Experience the Difference <br /> with CONCRETOR , you will
                 <br /> not regret it
               </p>
               <p className="mb-4">
@@ -313,20 +314,21 @@ export default function Home() {
           </div>
 
           <div>
-            <Image
-              src={heroimg}
-              alt="hero image"
-              width={400}
-              height={300}
-              className="mb-2.5 object-cover"
-            />
+            <div>
+              <Image
+                src={heroimg}
+                alt="hero image"
+                height={300}
+                className="mb-2.5 object-cover w-full h-full"
+              />
+            </div>
             <div className="flex flex-row gap-x-7 mb-2.5 text-[#038885]">
               <p>Innovation</p>
               <p>Project Management</p>
             </div>
-            <div className="w-[400px]">
+            <div className="">
               <p className="text-2xl font-bold mb-7">
-                Experience the Difference <br /> with CONCRETOR , you will{" "}
+                Experience the Difference <br /> with CONCRETOR , you will
                 <br /> not regret it
               </p>
               <p className="mb-4">
@@ -342,25 +344,28 @@ export default function Home() {
           </div>
 
           <div>
-            <Image
-              src={heroimg}
-              alt="hero image"
-              width={400}
-              height={300}
-              className="mb-2.5 object-cover"
-            />
+            <div>
+              <Image
+                src={heroimg}
+                alt="hero image"
+                height={300}
+                className="mb-2.5 object-cover w-full h-full"
+              />
+            </div>
             <div className="flex flex-row gap-x-7 mb-2.5 text-[#038885]">
               <p>Innovation</p>
               <p>Project Management</p>
             </div>
-            <div className="w-[400px]">
+            <div className="">
               <p className="text-2xl font-bold mb-7">
-                Experience the Difference
+                Experience the Difference <br /> with CONCRETOR , you will
+                <br /> not regret it
               </p>
               <p className="mb-4">
                 At CONCRETOR, we pride ourselves on delivering quality
                 craftsmanship, completing projects on time, and ensuring
                 customer satisfaction. With our <br />
+                expertise and dedication, we guarantee exception...
               </p>
             </div>
             <a href="" className="text-[#038885]">
@@ -374,7 +379,7 @@ export default function Home() {
         <p className="text-lg font-bold text-center">
           Need expert solutions for your next project?
         </p>
-        <Button title={"Contact Us"} onClick={onClickContactUs}/>
+        <Button title={"Contact Us"} onClick={onClickContactUs} />
       </div>
     </div>
   )
