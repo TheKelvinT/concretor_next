@@ -69,7 +69,7 @@ function Button({
   return (
     <button
       className={`relative inline-flex ${
-        width ? width : "w-auto"
+        width ? width : "w-full md:w-auto"
       } ${padding} cursor-pointer shadow-md shadow-black/50  items-center justify-center overflow-hidden border rounded-[20px] font-bold text-[18px] ${buttonStyles} px-6 py-3 transition-all duration-300 focus:outline-none `}
       onClick={onClick}
     >

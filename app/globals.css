@@ -27,7 +27,7 @@ body {
 }
 
 h2 {
-  @apply font-montserrat text-4xl;
+  @apply font-montserrat text-3xl md:text-4xl;
 }
 
 @tailwind utilities;

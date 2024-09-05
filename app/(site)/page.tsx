@@ -36,7 +36,7 @@ export default function Home() {
             className="object-cover w-full h-full"
           />
         </div>
-        <div className="absolute inset-0 flex items-center justify-center bg-black bg-opacity-30">
+        <div className="absolute inset-0 flex items-center justify-center bg-black bg-opacity-30 px-5">
           <div className="text-white text-center">
             <h2 className="font-bold drop-shadow-md">
               Transforming Spaces with <br /> Expert Renovation Solutions
@@ -44,10 +44,10 @@ export default function Home() {
             <p className="text-base">
               CONCRETOR is your trusted partner for all your renovation and
               construction needs. With <br /> our expertise and attention to
-              detail, we deliver exceptional results that exceed <br />{" "}
+              detail, we deliver exceptional results that exceed <br />
               expectations.
             </p>
-            <div className="gap-4 flex justify-center mt-4">
+            <div className="flex flex-col gap-4 md:flex-row justify-center mt-4">
               <Button title={"Contact Us"} onClick={onClickContactUs} />
               <Button
                 title={"Learn More"}
@@ -59,9 +59,7 @@ export default function Home() {
         </div>
       </div>
 
-      {/* <div className="flex justify-center"> */}
-      {/* <div className="w-full max-w-[1440px]"> */}
-      <div className="w-full py-16 px-16 flex justify-center ">
+      <div className="w-full px-5 py-16 md:px-16 flex justify-center ">
         <div className="max-w-[1440px] flex gap-10 items-center justify-center">
           <div className="md:basis-1/2 ">
             <h2 className="font-bold mb-4 text-center md:text-left w-full">
@@ -78,7 +76,7 @@ export default function Home() {
               completed efficiently, on time, and within budget.
             </p>
 
-            <div className="flex justify-center md:justify-start gap-4 mt-4">
+            <div className="flex flex-col gap-4 md:flex-row justify-center mt-4">
               <Button title={"Contact Us"} onClick={onClickContactUs} />
               <Button title={"Learn More"} onClick={onClickContactUs} />
             </div>
@@ -94,7 +92,7 @@ export default function Home() {
         </div>
       </div>
 
-      <div className="bg-primary flex flex-col md:flex-row h-auto md:h-[347px] items-center justify-center gap-8 md:gap-44 py-16 px-16">
+      <div className="bg-primary flex flex-col md:flex-row h-auto md:h-[347px] items-center justify-center gap-8 md:gap-44 px-5 py-16 md:px-16">
         <div className="flex flex-col items-center">
           <div className="relative w-[150px] h-[150px]">
             <div className="absolute w-[150px] h-[150px] bg-white rounded-full flex items-center justify-center">
@@ -156,11 +154,11 @@ export default function Home() {
       {/* "Our services" section */}
       <div
         id="services"
-        className="flex flex-col justify-center items-center py-16 px-16 w-full max-w-[1440px] mx-auto"
+        className="flex flex-col justify-center items-center px-5 py-16 md:px-16 w-full max-w-[1440px] mx-auto"
       >
         <h2 className="font-bold mb-10">Our Services</h2>
 
-        <div className="grid grid-cols-1 gap-8 md:grid-cols-4 md:grid-rows-2">
+        <div className="grid grid-cols-1 gap-8 md:grid-cols-4 md:grid-rows-2 w-full">
           <div className="relative flex justify-center items-center">
             <Image
               src={services7}
@@ -274,16 +272,15 @@ export default function Home() {
           </div>
         </div>
 
-        <p className="text-lg mt-10 mb-4">
+        <p className="text-lg mt-10 mb-4 text-center">
           Need expert solutions for your next project? Let's discuss.
         </p>
-
         <Button title={"Contact Us"} onClick={onClickContactUs} />
       </div>
 
       {/* Latest Articles section */}
 
-      <div className="flex flex-col justify-center items-center py-16 px-16">
+      <div className="flex flex-col justify-center items-center px-5 py-16 md:px-16">
         <h2 className="font-bold mb-10 text-center">Latest Articles</h2>
         <div className="flex gap-12 justify-center flex-wrap">
           <div>
@@ -372,13 +369,12 @@ export default function Home() {
           </div>
         </div>
       </div>
-      {/* </div> */}
-      {/* </div> */}
-      <div className="bg-[#EAE7E7] flex flex-row w-full h-[164px] items-center justify-center gap-x-24">
-        <p className="text-lg font-bold">
+
+      <div className="bg-[#EAE7E7] flex flex-col md:flex-row w-full h-[254px] md:h-[164px] items-center justify-center gap-y-4 md:gap-x-24 px-5 md:px-16">
+        <p className="text-lg font-bold text-center">
           Need expert solutions for your next project?
         </p>
-        <Button title={"Contact Us"} onClick={onClickContactUs} />
+        <Button title={"Contact Us"} onClick={onClickContactUs}/>
       </div>
     </div>
   )

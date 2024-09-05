@@ -92,7 +92,7 @@ function Navbar() {
         {open && (
           <div
             ref={menuRef}
-            className="absolute top-16 left-0 w-full bg-primary z-50 md:hidden bg-[#E6F3F3]"
+            className="absolute top-16 left-0 w-full z-50 md:hidden bg-[#E6F3F3]"
           >
             <div className="text-center mt-16">
               {rightNavigation.map((item) => (
