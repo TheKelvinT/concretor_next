@@ -22,6 +22,7 @@ module.exports = {
         main: "#595D3C",
         sub: "#51535C",
         light: "#F5F5F5",
+        red: "#D31717"
       },
       fontFamily: {
         // inter: ["Inter", "san-serif"],
