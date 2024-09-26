@@ -69,8 +69,8 @@ export default function Home() {
               At CONCRETOR, we specialize in providing innovative solutions to
               construction and renovation challenges. With our expertise and
               commitment to excellence, we are dedicated to delivering
-              high-quality results that exceed our clients' expectations.
-              Whether it's a small renovation project or a large-scale
+              high-quality results that exceed our clients&apos; expectations.
+              Whether it&apos;s a small renovation project or a large-scale
               construction endeavor, we have the knowledge and skills to tackle
               any challenge. Our unique approach ensures that every project is
               completed efficiently, on time, and within budget.
@@ -273,7 +273,7 @@ export default function Home() {
         </div>
 
         <p className="text-lg mt-10 mb-4 text-center">
-          Need expert solutions for your next project? Let's discuss.
+          Need expert solutions for your next project? Let&apos;s discuss.
         </p>
         <Button title={"Contact Us"} onClick={onClickContactUs} />
       </div>
