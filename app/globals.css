@@ -92,3 +92,7 @@ input::-webkit-inner-spin-button {
   --swiper-theme-color: rgba(255, 255, 255, 0.7);
   --swiper-navigation-size: 30px;
 }
+
+.gm-ui-hover-effect {
+  display: none !important;
+}

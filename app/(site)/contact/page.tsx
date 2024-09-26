@@ -1,9 +1,9 @@
 "use client"
 
-import { ChangeEvent, useState } from 'react';
+import { ChangeEvent, useState } from "react"
 import Button from "@/components/Button"
-import Map from "@/components/Map";
-import emailjs from "emailjs-com";
+import Map from "@/components/Map"
+import emailjs from "emailjs-com"
 import ContactUsPageIcon1 from "@/assets/ContactUsPageIcon1.png"
 import Image from "next/image"
 import whatsapp from "@/assets/whatsapp.png"
@@ -11,77 +11,80 @@ import facebook from "@/assets/facebook.png"
 import tiktok from "@/assets/tiktok.png"
 
 export default function Contact() {
-  const [formData, setFormData] = useState <any> ({
-    name: '',
-    contactNumber: '',
-    email: '',
-    enquiry: '',
-  });
+  const [formData, setFormData] = useState<any>({
+    name: "",
+    contactNumber: "",
+    email: "",
+    enquiry: "",
+  })
 
-  const handleChange = (e:any) => {
-    const { name, value } = e.target;
+  const handleChange = (e: any) => {
+    const { name, value } = e.target
     setError(!error)
     console.log(e.target.value)
     setFormData({
       ...formData,
       [name]: value,
-    });
-  };
+    })
+  }
 
-  const [isLoading, setIsLoading] = useState(false);
+  const [isLoading, setIsLoading] = useState(false)
 
-  const [success, setSuccess] = useState(false);
+  const [success, setSuccess] = useState(false)
 
-  const [error, setError] = useState(false);
+  const [error, setError] = useState(false)
 
   const sendEmail = async () => {
-    const emailServiceId = process.env.NEXT_PUBLIC_EMAIL_SERVICE_ID;
-    const emailTemplateId = process.env.NEXT_PUBLIC_EMAIL_TEMPLATE_ID;
-    const emailPublicKey = process.env.NEXT_PUBLIC_EMAIL_PUBLIC_KEY;
-  
+    const emailServiceId = process.env.NEXT_PUBLIC_EMAIL_SERVICE_ID
+    const emailTemplateId = process.env.NEXT_PUBLIC_EMAIL_TEMPLATE_ID
+    const emailPublicKey = process.env.NEXT_PUBLIC_EMAIL_PUBLIC_KEY
+
     if (!emailServiceId || !emailTemplateId || !emailPublicKey) {
-      console.error('One or more environment variables are missing.');
-      setError(true);
-      setIsLoading(false);
-      return;
+      console.error("One or more environment variables are missing.")
+      setError(true)
+      setIsLoading(false)
+      return
     }
-  
+
     try {
-      setIsLoading(true);
-  
+      setIsLoading(true)
+
       await emailjs.send(
         emailServiceId,
         emailTemplateId,
         formData,
         emailPublicKey
-      );
-  
-      setIsLoading(false);
-      setSuccess(true);
+      )
+
+      setIsLoading(false)
+      setSuccess(true)
     } catch (error) {
-      console.error('Failed to send email:', error);
-      setIsLoading(false);
-      setError(true);
+      console.error("Failed to send email:", error)
+      setIsLoading(false)
+      setError(true)
     }
-  
+
     setFormData({
-      name: '',
-      contactNumber: '',
-      email: '',
-      enquiry: '',
-    });
-  };
-  
+      name: "",
+      contactNumber: "",
+      email: "",
+      enquiry: "",
+    })
+  }
 
-  const handleSubmit = (e: { preventDefault: () => void; }) => {
-    e.preventDefault();
-    console.log('Form data submitted:', formData);
+  const handleSubmit = (e: { preventDefault: () => void }) => {
+    e.preventDefault()
+    console.log("Form data submitted:", formData)
 
-    if(process.env.NEXT_PUBLIC_EMAIL_SERVICE_ID && process.env.NEXT_PUBLIC_EMAIL_TEMPLATE_ID && process.env.NEXT_PUBLIC_EMAIL_PUBLIC_KEY && formData) {
-      sendEmail();
+    if (
+      process.env.NEXT_PUBLIC_EMAIL_SERVICE_ID &&
+      process.env.NEXT_PUBLIC_EMAIL_TEMPLATE_ID &&
+      process.env.NEXT_PUBLIC_EMAIL_PUBLIC_KEY &&
+      formData
+    ) {
+      sendEmail()
     }
-  };
-
+  }
 
   return (
     <div className = "flex flex-col md:flex-row px-3 py-12 md:px-16 md:py-16 md:max-w-[1440px]">
@@ -193,4 +196,3 @@ export default function Contact() {
     </div>
   )
 }
-
