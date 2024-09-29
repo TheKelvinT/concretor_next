@@ -26,52 +26,71 @@ export default async function About(props: Props) {
 
   return (
     <div>
-      <div className = "relative">
-        <div className = "h-[70vh]">
+      <div className="relative">
+        <div className="h-[70vh]">
           <Image
             src={aboutusbanner}
             alt="About Us Banner Image"
             className="object-cover w-full h-full"
           />
-          <div className = "absolute inset-0 flex items-center justify-center">
-            <div className = "text-center">
-              <p className = "text-6xl font-merriweather text-[#FF5757] mb-12">CONCRETOR</p>
-              <p className = "text-4xl">Your building and </p>
-              <p className = "text-4xl mb-12">infrastructure contractor</p>
+          <div className="absolute inset-0 flex items-center justify-center">
+            <div className="text-center px-4 md:px-0">
+              <p className="text-5xl md:text-6xl font-merriweather text-[#FF5757] mb-12">
+                CONCRETOR
+              </p>
+              <p className="text-4xl">Your building and </p>
+              <p className="text-4xl mb-12">infrastructure contractor</p>
               <Button title={"Contact Us"} onClick={onClickContactUs} />
             </div>
           </div>
         </div>
       </div>
 
-      <div className = "flex flex-col mx-16 my-16">
+      <div className="flex flex-col mx-4 md:mx-16 my-16">
         <div className="w-full flex justify-center ">
-          <div className="max-w-[1440px] flex items-center justify-center pb-12">
-            <div className="w-1/2 mr-12">
-              <h2 className = "text-[#FF5757] font-bold pb-4">Licensed Contractor</h2>
-              <p>With our experienced personnel and as a licensed contractor by CIDB and SPAN, we are equipped to deliver exceptional building and infrastructure solutions. From small to medium projects, our professional team is committed to excellence, ensuring a seamless journey from concept to completion</p>
+          <div className="max-w-[1440px] flex flex-col md:flex-row items-center justify-center pb-12 md:gap-12">
+            <div className="md:w-1/2  order-2 md:order-1">
+              <h2 className="text-[#FF5757] font-bold mb-4 mt-2">
+                Licensed Contractor
+              </h2>
+              <p>
+                With our experienced personnel and as a licensed contractor by
+                CIDB and SPAN, we are equipped to deliver exceptional building
+                and infrastructure solutions. From small to medium projects, our
+                professional team is committed to excellence, ensuring a
+                seamless journey from concept to completion
+              </p>
             </div>
-            <div className="w-1/2 h-[327px]">
+            <div className="md:w-1/2 aspect-[16/9] overflow-hidden  order-1 md:order-2">
               <Image
                 src={aboutusbanner}
                 alt="About Us Banner Image"
-                className="object-cover h-full"
+                className="object-cover h-full w-full"
               />
             </div>
           </div>
         </div>
-        <div className="w-full flex justify-center">
-          <div className="max-w-[1440px] flex items-center justify-center">
-            <div className="w-1/2 h-[327px]">
+
+        <div className="w-full flex justify-center ">
+          <div className="max-w-[1440px] flex flex-col md:flex-row items-center justify-center pb-12 md:gap-12">
+            <div className="md:w-1/2   order-1 md:order-2">
+              <h2 className="text-[#FF5757] font-bold mb-4 mt-2">
+                Quality & Durability
+              </h2>
+              <p>
+                At CONCRETOR, we also take a principled approach to structural
+                repair, prioritizing quality and durability. Our team of experts
+                uses proven methods and techniques to effectively control and
+                extend the service life of your building by minimizing the
+                development of defects in the structure.
+              </p>
+            </div>
+            <div className="md:w-1/2 aspect-[16/9] overflow-hidden  order-2 md:order-1">
               <Image
                 src={aboutusbanner}
                 alt="About Us Banner Image"
-                className="object-cover h-full"
+                className="object-cover h-full w-full"
               />
-            </div>
-            <div className="w-1/2 ml-12">
-              <h2 className = "text-[#FF5757] font-bold pb-4">Quality & Durability</h2>
-              <p>At CONCRETOR, we also take a principled approach to structural repair, prioritizing quality and durability. Our team of experts uses proven methods and techniques to effectively control and extend the service life of your building by minimizing the development of defects in the structure.</p>
             </div>
           </div>
         </div>
@@ -83,8 +102,8 @@ export default async function About(props: Props) {
       >
         <h2 className="font-bold mb-10">Our Services</h2>
 
-        <div className="grid grid-cols-1 gap-8 md:grid-cols-4 md:grid-rows-2 w-full">
-          <div className="relative flex justify-center items-center">
+        <div className="grid grid-cols-1 gap-8 md:grid-cols-4 md:grid-rows-2 w-full ">
+          <div className="relative flex justify-center items-center aspect-[4/3]">
             <Image
               src={services7}
               alt="Services7 image"
@@ -97,7 +116,7 @@ export default async function About(props: Props) {
             </div>
           </div>
 
-          <div className="relative flex justify-center items-center">
+          <div className="relative flex justify-center items-center aspect-[4/3]">
             <Image
               src={services2}
               alt="Services2 image"
@@ -110,7 +129,7 @@ export default async function About(props: Props) {
             </div>
           </div>
 
-          <div className="relative flex justify-center items-center">
+          <div className="relative flex justify-center items-center aspect-[4/3]">
             <Image
               src={services1}
               alt="Services1 image"
@@ -125,7 +144,7 @@ export default async function About(props: Props) {
             </div>
           </div>
 
-          <div className="relative flex justify-center items-center">
+          <div className="relative flex justify-center items-center aspect-[4/3]">
             <Image
               src={services8}
               alt="Services8 image"
@@ -138,7 +157,7 @@ export default async function About(props: Props) {
             </div>
           </div>
 
-          <div className="relative flex justify-center items-center">
+          <div className="relative flex justify-center items-center aspect-[4/3]">
             <Image
               src={services6}
               alt="Services6 image"
@@ -153,7 +172,7 @@ export default async function About(props: Props) {
             </div>
           </div>
 
-          <div className="relative flex justify-center items-center">
+          <div className="relative flex justify-center items-center aspect-[4/3]">
             <Image
               src={services4}
               alt="Services4 image"
@@ -166,7 +185,7 @@ export default async function About(props: Props) {
             </div>
           </div>
 
-          <div className="relative flex justify-center items-center">
+          <div className="relative flex justify-center items-center aspect-[4/3]">
             <Image
               src={services5}
               alt="Services5 image"
@@ -181,7 +200,7 @@ export default async function About(props: Props) {
             </div>
           </div>
 
-          <div className="relative flex justify-center items-center">
+          <div className="relative flex justify-center items-center aspect-[4/3]">
             <Image
               src={services3}
               alt="Services3 image"
@@ -203,19 +222,24 @@ export default async function About(props: Props) {
         <Button title={"Contact Us"} onClick={onClickContactUs} />
       </div>
 
-      <div className = "w-full flex justify-center mx-16 mb-16">
-        <div className = "max-w-[1440px] flex items-center justify-center gap-x-10">
-          <div className = "w-1/2">
-            <h2 className = "text-[#FF5757] font-bold">Our Vision</h2>
-            <p>To be a company recognised as an expert of constructing, repair engineering and testing in all reinforced concrete related along constructions.</p>
-          </div>
-          <div className="w-1/2">
-            <h2 className = "text-[#FF5757] font-bold">Our Mission</h2>
-            <p>To lengthen lifespan of reinforced concrete through our services to meet the condition of projects by combination of experience and innovation.</p>
-          </div>
+      <div className="max-w-[1440px] flex flex-col md:flex-row  items-center justify-center gap-y-8 md:gap-y-0 md:gap-x-10 mx-4 md:mx-0 mb-16 ">
+        <div className="md:w-1/2">
+          <h2 className="text-[#FF5757] font-bold text-3xl">Our Vision</h2>
+          <p>
+            To be a company recognised as an expert of constructing, repair
+            engineering and testing in all reinforced concrete related along
+            constructions.
+          </p>
+        </div>
+        <div className="md:w-1/2">
+          <h2 className="text-[#FF5757] font-bold text-3xl">Our Mission</h2>
+          <p>
+            To lengthen lifespan of reinforced concrete through our services to
+            meet the condition of projects by combination of experience and
+            innovation.
+          </p>
         </div>
       </div>
-
     </div>
   )
 }

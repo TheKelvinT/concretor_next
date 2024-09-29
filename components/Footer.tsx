@@ -44,7 +44,7 @@ function Footer() {
 
       <hr className="border-white w-[90vw] mt-12 mb-4 " />
 
-      <div className="text-center font-monstserrat pb-4 ">
+      <div className="text-center font-monstserrat pb-4 mx-4 md:mx-0">
         <p>
           2024 CONCRETOR Engineering and Laboratories Sdn Bhd © All Rights
           Reserved.
