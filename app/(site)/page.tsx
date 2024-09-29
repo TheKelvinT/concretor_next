@@ -18,9 +18,11 @@ import services5 from "@/assets/services5.jpg"
 import services6 from "@/assets/services6.jpg"
 import services7 from "@/assets/services7.jpg"
 import services8 from "@/assets/services8.jpg"
+import { useState } from "react"
 
 export default function Home() {
   const router = useRouter()
+  const [data, setData] = useState()
 
   const onClickContactUs = () => {
     router.push("/contact")
@@ -39,7 +41,7 @@ export default function Home() {
         <div className="absolute inset-0 flex items-center justify-center bg-black bg-opacity-30 px-5">
           <div className="text-white text-center">
             <h2 className="font-bold drop-shadow-md">
-              Transforming Spaces with <br /> Expert Renovation Solutions
+              {/* Transforming Spaces with <br /> Expert Renovation Solutions */}
             </h2>
             <p className="text-base">
               CONCRETOR is your trusted partner for all your renovation and
@@ -305,7 +307,39 @@ export default function Home() {
                 At CONCRETOR, we pride ourselves on delivering quality
                 craftsmanship, completing projects on time, and ensuring
                 customer satisfaction. With our <br />
-                expertise and dedication, we guarantee exception...
+                expertise and dedication, we guarantee exception At CONCRETOR,
+                we pride ourselves on delivering quality craftsmanship,
+                completing projects on time, and ensuring customer satisfaction.
+                With our <br />
+                expertise and dedication, we guarantee exception At CONCRETOR,
+                we pride ourselves on delivering quality craftsmanship,
+                completing projects on time, and ensuring customer satisfaction.
+                With our <br />
+                expertise and dedication, we guarantee exception At CONCRETOR,
+                we pride ourselves on delivering quality craftsmanship,
+                completing projects on time, and ensuring customer satisfaction.
+                With our <br />
+                expertise and dedication, we guarantee exception At CONCRETOR,
+                we pride ourselves on delivering quality craftsmanship,
+                completing projects on time, and ensuring customer satisfaction.
+                With our <br />
+                expertise and dedication, we guarantee exception At CONCRETOR,
+                we pride ourselves on delivering quality craftsmanship,
+                completing projects on time, and ensuring customer satisfaction.
+                With our <br />
+                expertise and dedication, we guarantee exception At CONCRETOR,
+                we pride ourselves on delivering quality craftsmanship,
+                completing projects on time, and ensuring customer satisfaction.
+                With our <br />
+                expertise and dedication, we guarantee exception At CONCRETOR,
+                we pride ourselves on delivering quality craftsmanship,
+                completing projects on time, and ensuring customer satisfaction.
+                With our <br />
+                expertise and dedication, we guarantee exception At CONCRETOR,
+                we pride ourselves on delivering quality craftsmanship,
+                completing projects on time, and ensuring customer satisfaction.
+                With our <br />
+                expertise and dedication, we guarantee exception
               </p>
             </div>
             <a href="" className="text-[#038885]">

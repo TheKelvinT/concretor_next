@@ -31,6 +31,7 @@ const blog = {
       name: "summary",
       title: "Summary",
       type: "array",
+
       of: [{ type: "block" }],
     },
     {
@@ -60,6 +61,6 @@ const blog = {
       ],
     },
   ],
-};
+}
 
-export default blog;
+export default blog
