@@ -1,13 +1,12 @@
-"use client"
-
 import React from "react"
 import { PortableText } from "@portabletext/react"
 import urlBuilder from "@sanity/image-url"
-import { useRouter } from "next/router"
+import { useRouter } from "next/navigation"
 // Define the types for the Card props
 interface CardProps {
   data: {
     title: string
+    slug: string
     summary: string
     image_url: string
     tag: string
@@ -17,6 +16,7 @@ interface CardProps {
 
 const Card: React.FC<CardProps> = ({ data}) => {
   const router = useRouter()
+  console.log(data)
 
   const urlFor = (source: any) =>
     urlBuilder({ projectId: "9cqbua0r", dataset: "production" }).image(source)
@@ -39,7 +39,7 @@ const Card: React.FC<CardProps> = ({ data}) => {
   }
 
   const handleBlogRedirect = () => {
-    router.push("/blog/1")
+    router.push(`/blog/${data.slug.current}`)
     console.log("hi")
   }
 

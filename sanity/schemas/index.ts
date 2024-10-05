@@ -20,7 +20,7 @@ const schemas = [
   callToAction,
   // reservations,
   // blogHero,
-  // blog,
+  blog,
   // careerContent,
   // openings,
   // values,

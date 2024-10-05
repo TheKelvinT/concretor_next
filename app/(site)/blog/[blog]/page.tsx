@@ -1,3 +1,5 @@
+"use client"
+
 import { useState, useEffect } from "react";
 import { PortableText } from "@portabletext/react";
 // import { BlogPostModel, SingleBlogModel } from "@/types/Blog";
@@ -13,7 +15,7 @@ import FacebookIcon from "../assets/facebook.svg";
 import InstagramIcon from "../assets/instagram-icon.svg";
 import LinkedinIcon from "../assets/linkedin-icon.svg";
 import urlBuilder from "@sanity/image-url";
-import "./styles/SingleBlogStyles.scss";
+// import "./styles/SingleBlogStyles.scss";
 // import CustomImage from "@/components/CustomImage";
 // import { fetchBlogPost, fetchSingleBlog } from "@/utils/request";
 import Button from "@/components/Button";
