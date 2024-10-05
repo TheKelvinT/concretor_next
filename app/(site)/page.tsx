@@ -18,9 +18,11 @@ import services5 from "@/assets/services5.jpg"
 import services6 from "@/assets/services6.jpg"
 import services7 from "@/assets/services7.jpg"
 import services8 from "@/assets/services8.jpg"
+import { useState } from "react"
 
 export default function Home() {
   const router = useRouter()
+  const [data, setData] = useState()
 
   const onClickContactUs = () => {
     router.push("/contact")
@@ -39,7 +41,7 @@ export default function Home() {
         <div className="absolute inset-0 flex items-center justify-center bg-black bg-opacity-30 px-5">
           <div className="text-white text-center">
             <h2 className="font-bold drop-shadow-md">
-              Transforming Spaces with <br /> Expert Renovation Solutions
+              {/* Transforming Spaces with <br /> Expert Renovation Solutions */}
             </h2>
             <p className="text-base">
               CONCRETOR is your trusted partner for all your renovation and
@@ -158,8 +160,8 @@ export default function Home() {
       >
         <h2 className="font-bold mb-10">Our Services</h2>
 
-        <div className="grid grid-cols-1 gap-8 md:grid-cols-4 md:grid-rows-2 w-full">
-          <div className="relative flex justify-center items-center">
+        <div className="grid grid-cols-1 gap-8 md:grid-cols-4 md:grid-rows-2 w-full ">
+          <div className="relative flex justify-center items-center aspect-[4/3]">
             <Image
               src={services7}
               alt="Services7 image"
@@ -172,7 +174,7 @@ export default function Home() {
             </div>
           </div>
 
-          <div className="relative flex justify-center items-center">
+          <div className="relative flex justify-center items-center aspect-[4/3]">
             <Image
               src={services2}
               alt="Services2 image"
@@ -185,7 +187,7 @@ export default function Home() {
             </div>
           </div>
 
-          <div className="relative flex justify-center items-center">
+          <div className="relative flex justify-center items-center aspect-[4/3]">
             <Image
               src={services1}
               alt="Services1 image"
@@ -200,7 +202,7 @@ export default function Home() {
             </div>
           </div>
 
-          <div className="relative flex justify-center items-center">
+          <div className="relative flex justify-center items-center aspect-[4/3]">
             <Image
               src={services8}
               alt="Services8 image"
@@ -213,7 +215,7 @@ export default function Home() {
             </div>
           </div>
 
-          <div className="relative flex justify-center items-center">
+          <div className="relative flex justify-center items-center aspect-[4/3]">
             <Image
               src={services6}
               alt="Services6 image"
@@ -228,7 +230,7 @@ export default function Home() {
             </div>
           </div>
 
-          <div className="relative flex justify-center items-center">
+          <div className="relative flex justify-center items-center aspect-[4/3]">
             <Image
               src={services4}
               alt="Services4 image"
@@ -241,7 +243,7 @@ export default function Home() {
             </div>
           </div>
 
-          <div className="relative flex justify-center items-center">
+          <div className="relative flex justify-center items-center aspect-[4/3]">
             <Image
               src={services5}
               alt="Services5 image"
@@ -256,7 +258,7 @@ export default function Home() {
             </div>
           </div>
 
-          <div className="relative flex justify-center items-center">
+          <div className="relative flex justify-center items-center aspect-[4/3]">
             <Image
               src={services3}
               alt="Services3 image"
@@ -305,7 +307,39 @@ export default function Home() {
                 At CONCRETOR, we pride ourselves on delivering quality
                 craftsmanship, completing projects on time, and ensuring
                 customer satisfaction. With our <br />
-                expertise and dedication, we guarantee exception...
+                expertise and dedication, we guarantee exception At CONCRETOR,
+                we pride ourselves on delivering quality craftsmanship,
+                completing projects on time, and ensuring customer satisfaction.
+                With our <br />
+                expertise and dedication, we guarantee exception At CONCRETOR,
+                we pride ourselves on delivering quality craftsmanship,
+                completing projects on time, and ensuring customer satisfaction.
+                With our <br />
+                expertise and dedication, we guarantee exception At CONCRETOR,
+                we pride ourselves on delivering quality craftsmanship,
+                completing projects on time, and ensuring customer satisfaction.
+                With our <br />
+                expertise and dedication, we guarantee exception At CONCRETOR,
+                we pride ourselves on delivering quality craftsmanship,
+                completing projects on time, and ensuring customer satisfaction.
+                With our <br />
+                expertise and dedication, we guarantee exception At CONCRETOR,
+                we pride ourselves on delivering quality craftsmanship,
+                completing projects on time, and ensuring customer satisfaction.
+                With our <br />
+                expertise and dedication, we guarantee exception At CONCRETOR,
+                we pride ourselves on delivering quality craftsmanship,
+                completing projects on time, and ensuring customer satisfaction.
+                With our <br />
+                expertise and dedication, we guarantee exception At CONCRETOR,
+                we pride ourselves on delivering quality craftsmanship,
+                completing projects on time, and ensuring customer satisfaction.
+                With our <br />
+                expertise and dedication, we guarantee exception At CONCRETOR,
+                we pride ourselves on delivering quality craftsmanship,
+                completing projects on time, and ensuring customer satisfaction.
+                With our <br />
+                expertise and dedication, we guarantee exception
               </p>
             </div>
             <a href="" className="text-[#038885]">
