@@ -1,6 +1,6 @@
 import homeCarousel from "./home-carousel-schema";
 import homeNavigation from "./home-navigation-schema";
-import homeSectionContent from "./home-sectionContent-schema";
+// import homeSectionContent from "./home-sectionContent-schema";
 import homeCardSection from "./home-cardSection.schema";
 import blog from "./blog-schema";
 import faq from "./faq-schema";
@@ -14,6 +14,7 @@ import blogHero from "./blog-hero-schema";
 import reservations from "./reservations-schema";
 import careerContent from "./careers-content-schema";
 import events from "./events-hero-schema";
+import homeSectionContent from "./home-schema";
 
 const schemas = [
   callToAction,

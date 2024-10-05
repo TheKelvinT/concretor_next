@@ -58,5 +58,17 @@ export const blogPosts = [
     tag: "engineering",
     summary: "Space colonization presents unique engineering challenges. Explore the innovations making space construction a reality.",
     image_url: "https://www.open.edu.au/-/media/blog/2023/05-may/what-is-civil-engineering.jpg?h=477&iar=0&w=715&rev=ec7c0be242424ad4b659dd6f32c0c91e&hash=636925D1147C240D69F9F22F21184558"
+  },
+  {
+    title: "Engineering in Space: The Challenges of Extraterrestrial Construction",
+    tag: "engineering",
+    summary: "Space colonization presents unique engineering challenges. Explore the innovations making space construction a reality.",
+    image_url: "https://www.open.edu.au/-/media/blog/2023/05-may/what-is-civil-engineering.jpg?h=477&iar=0&w=715&rev=ec7c0be242424ad4b659dd6f32c0c91e&hash=636925D1147C240D69F9F22F21184558"
+  },
+  {
+    title: "Engineering in Space: The Challenges of Extraterrestrial Construction",
+    tag: "engineering",
+    summary: "Space colonization presents unique engineering challenges. Explore the innovations making space construction a reality.",
+    image_url: "https://www.open.edu.au/-/media/blog/2023/05-may/what-is-civil-engineering.jpg?h=477&iar=0&w=715&rev=ec7c0be242424ad4b659dd6f32c0c91e&hash=636925D1147C240D69F9F22F21184558"
   }
 ];
