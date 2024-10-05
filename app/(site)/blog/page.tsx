@@ -3,6 +3,7 @@ import React, { useEffect, useState } from "react"
 import { blogPosts } from "../../data"
 import Card from "@/components/Card"
 import axios from "axios"
+import { useRouter } from "next/router"
 
 // type Props = {
 //   blogPosts:Array<{
@@ -13,6 +14,7 @@ import axios from "axios"
 // }
 
 export default function BlogPosts() {
+  // const router = useRouter()
   const [currentPage, setCurrentPage] = useState(1)
   const [blogPosts, setBlogPosts] = useState([])
   const maxPostsperPage = 5
