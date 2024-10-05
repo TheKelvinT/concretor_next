@@ -14,23 +14,25 @@ import reservations from "./reservations-schema"
 import careerContent from "./careers-content-schema"
 import events from "./events-hero-schema"
 import homeSectionContent from "./home-schema";
+import aboutSectionContent from "./about-schema";
 
 const schemas = [
   callToAction,
-  reservations,
-  blogHero,
-  blog,
-  careerContent,
-  openings,
-  values,
-  homeCarousel,
+  // reservations,
+  // blogHero,
+  // blog,
+  // careerContent,
+  // openings,
+  // values,
+  // homeCarousel,
   homeSectionContent,
-  homeCardSection,
-  homeNavigation,
-  menuSectionOne,
-  menus,
-  specialMenu,
-  events,
+  // homeCardSection,
+  // homeNavigation,
+  // menuSectionOne,
+  // menus,
+  // specialMenu,
+  // events,
+  aboutSectionContent,
 ]
 
 export default schemas
