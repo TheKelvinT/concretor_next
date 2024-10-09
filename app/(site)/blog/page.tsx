@@ -55,6 +55,7 @@ export default function BlogPosts() {
 
   return (
     <div className="flex flex-col items-center">
+      <h2 className = "font-bold">Featured Blogs</h2>
       {blogPosts.map((post, index) => (
         <div key={index} className="mb-7">
           <Card data={post} />
