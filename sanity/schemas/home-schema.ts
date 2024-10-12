@@ -66,7 +66,14 @@ const homeSectionContent = {
                 },
                 {
                     name: "callToActionLeft",
-                    title: "Button text left",
+                    title: "Button text - Left",
+                    type: "reference",
+                    to: [{type: "callToAction"}],
+                    description: "Select Call to Action",
+                },
+                {
+                    name: "callToActionRight",
+                    title: "Button text -Right",
                     type: "reference",
                     to: [{type: "callToAction"}],
                     description: "Select Call to Action",

@@ -30,25 +30,27 @@ export default function Home() {
 
   const fetchData = async () => {
     const res = await axios.get(
-      "https://say9s8oc.api.sanity.io/v2021-10-21/data/query/production?query=*%5B_type%20%3D%3D%20%22homeContent%22%5D%20%7B%0A%20%20_id%2C%0A%20%20_createdAt%2C%0A%20%20title%2C%0A%20%20%22homeSectionOne%22%3A%20homeSectionOne%20%7B%0A%20%20%20%20title%2C%0A%20%20%20%20description%2C%0A%20%20%20%20%22bannerUrl%22%3A%20banner.asset-%3Eurl%2C%0A%20%20%20%20%22callToActionText%22%3A%20callToAction-%3EbuttonText%0A%20%20%7D%2C%0A%20%20%22homeSectionTwo%22%3A%20homeSectionTwo%20%7B%0A%20%20%20%20title%2C%0A%20%20%20%20description%2C%0A%20%20%20%20%22imageUrl%22%3A%20image.asset-%3Eurl%2C%0A%20%20%20%20%22callToActionLeftText%22%3A%20callToActionLeft-%3EbuttonText%0A%20%20%7D%2C%0A%20%20%22homeSectionThree%22%3A%20homeSectionThree%20%7B%0A%20%20%20%20titleLeft%2C%0A%20%20%20%20descriptionLeft%2C%0A%20%20%20%20%22imageLeftUrl%22%3A%20imageleft.asset-%3Eurl%2C%0A%20%20%20%20titleMiddle%2C%0A%20%20%20%20descriptionMiddle%2C%0A%20%20%20%20%22imageMiddleUrl%22%3A%20imageMiddle.asset-%3Eurl%2C%0A%20%20%20%20titleRight%2C%0A%20%20%20%20descriptionRight%2C%0A%20%20%20%20%22imageRightUrl%22%3A%20imageRight.asset-%3Eurl%0A%20%20%7D%0A%7D"
+      "https://say9s8oc.api.sanity.io/v2021-10-21/data/query/production?query=*%5B_type%20%3D%3D%20%22homeContent%22%5D%20%7B%0A%20%20_id%2C%0A%20%20_createdAt%2C%0A%20%20title%2C%0A%20%20%22homeSectionOne%22%3A%20homeSectionOne%20%7B%0A%20%20%20%20title%2C%0A%20%20%20%20description%2C%0A%20%20%20%20%22imageUrl%22%3A%20banner.asset%20-%3E%20url%2C%0A%20%20%20%20%22callToActionText%22%3A%20callToAction-%3EbuttonText%0A%20%20%7D%2C%0A%20%20%22homeSectionTwo%22%3A%20homeSectionTwo%20%7B%0A%20%20%20%20title%2C%0A%20%20%20%20description%2C%0A%20%20%20%20%22imageUrl%22%3A%20image.asset-%3Eurl%2C%0A%20%20%20%20%22callToActionLeftText%22%3A%20callToActionLeft-%3EbuttonText%2C%0A%20%20%20%20%22callToActionRightText%22%3A%20callToActionRight-%3EbuttonText%0A%20%20%7D%2C%0A%20%20%22homeSectionThree%22%3A%20homeSectionThree%20%7B%0A%20%20%20%20titleLeft%2C%0A%20%20%20%20descriptionLeft%2C%0A%20%20%20%20%22imageLeftUrl%22%3A%20imageleft.asset-%3Eurl%2C%0A%20%20%20%20titleMiddle%2C%0A%20%20%20%20descriptionMiddle%2C%0A%20%20%20%20%22imageMiddleUrl%22%3A%20imageMiddle.asset-%3Eurl%2C%0A%20%20%20%20titleRight%2C%0A%20%20%20%20descriptionRight%2C%0A%20%20%20%20%22imageRightUrl%22%3A%20imageRight.asset-%3Eurl%0A%20%20%7D%0A%7D"
     )
-    if(res){ 
+      if(res){ 
       setData(res.data.result[0])
     }
     console.log(res.data.result)
   }
 
   useEffect(() => {
-    fetchData()
-  }, [])
+    if (!data){
+      fetchData()
+    }
+    console.log(data)
+  }, [data])
 
-  console.log(data?.homeSectionOne?.imageUrl)
   return (
     <div>
       <div className="relative">
         { data && 
           <div className="h-[70vh]">
-          <Image
+          <img
             src={data?.homeSectionOne?.imageUrl} 
             alt="Hero image"
             className="object-cover w-full h-full"
@@ -58,13 +60,10 @@ export default function Home() {
         <div className="absolute inset-0 flex items-center justify-center bg-black bg-opacity-30 px-5">
           <div className="text-white text-center">
             <h2 className="font-bold drop-shadow-md">
-              {/* Transforming Spaces with <br /> Expert Renovation Solutions */}
+              {data?.homeSectionOne?.title}
             </h2>
             <p className="text-base">
-              CONCRETOR is your trusted partner for all your renovation and
-              construction needs. With <br /> our expertise and attention to
-              detail, we deliver exceptional results that exceed <br />
-              expectations.
+              {data?.homeSectionOne?.description?.[0]?.children?.[0]?.text}
             </p>
             <div className="flex flex-col gap-4 md:flex-row justify-center mt-4">
               <Button title={"Contact Us"} onClick={onClickContactUs} />
@@ -82,17 +81,10 @@ export default function Home() {
         <div className="max-w-[1440px] flex gap-10 items-center justify-center">
           <div className="md:basis-1/2 ">
             <h2 className="font-bold mb-4 text-center md:text-left w-full">
-              Solving Construction and Renovation Challenges with Expertise
+              {data?.homeSectionTwo?.title}
             </h2>
             <p className="text-center md:text-left w-full">
-              At CONCRETOR, we specialize in providing innovative solutions to
-              construction and renovation challenges. With our expertise and
-              commitment to excellence, we are dedicated to delivering
-              high-quality results that exceed our clients&apos; expectations.
-              Whether it&apos;s a small renovation project or a large-scale
-              construction endeavor, we have the knowledge and skills to tackle
-              any challenge. Our unique approach ensures that every project is
-              completed efficiently, on time, and within budget.
+            {data?.homeSectionTwo?.description?.[0]?.children?.[0]?.text}
             </p>
 
             <div className="flex flex-col gap-4 md:flex-row justify-center mt-4">
@@ -102,8 +94,8 @@ export default function Home() {
           </div>
 
           <div className="hidden md:block basis-1/2 h-[425px]">
-            <Image
-              src={construction}
+            <img
+              src={data?.homeSectionTwo?.imageUrl}
               alt="Construction image"
               className="object-cover rounded-lg h-full"
             />
@@ -115,8 +107,8 @@ export default function Home() {
         <div className="flex flex-col items-center">
           <div className="relative w-[150px] h-[150px]">
             <div className="absolute w-[150px] h-[150px] bg-white rounded-full flex items-center justify-center">
-              <Image
-                src={crane}
+              <img
+                src={data?.homeSectionThree?.imageLeftUrl}
                 alt="Crane image"
                 width={100}
                 height={100}
@@ -126,16 +118,16 @@ export default function Home() {
           </div>
 
           <div className="text-center text-white mt-4">
-            <p className="text-6xl">10+</p>
-            <p className="text-base">Years Experience</p>
+            <p className="text-6xl">{data?.homeSectionThree?.titleLeft}</p>
+            <p className="text-base">{data?.homeSectionThree?.descriptionLeft}</p>
           </div>
         </div>
 
         <div className="flex flex-col items-center">
           <div className="relative w-[150px] h-[150px]">
             <div className="absolute w-[150px] h-[150px] bg-white rounded-full flex items-center justify-center">
-              <Image
-                src={image}
+              <img
+                src={data?.homeSectionThree?.imageMiddleUrl}
                 alt="Hand image"
                 width={100}
                 height={100}
@@ -145,16 +137,16 @@ export default function Home() {
           </div>
 
           <div className="text-center text-white mt-4">
-            <p className="text-6xl">20+</p>
-            <p className="text-base">Projects Delivered</p>
+            <p className="text-6xl">{data?.homeSectionThree?.titleMiddle}</p>
+            <p className="text-base">{data?.homeSectionThree?.descriptionMiddle}</p>
           </div>
         </div>
 
         <div className="flex flex-col items-center">
           <div className="relative w-[150px] h-[150px]">
             <div className="absolute w-[150px] h-[150px] bg-white rounded-full flex items-center justify-center">
-              <Image
-                src={diversity}
+              <img
+                src={data?.homeSectionThree?.imageRightUrl}
                 alt="Diversity image"
                 width={100}
                 height={100}
@@ -164,8 +156,8 @@ export default function Home() {
           </div>
 
           <div className="text-center text-white mt-4">
-            <p className="text-6xl">26+</p>
-            <p className="text-base">Satisfied Customers</p>
+            <p className="text-6xl">{data?.homeSectionThree?.titleRight}</p>
+            <p className="text-base">{data?.homeSectionThree?.descriptionRight}</p>
           </div>
         </div>
       </div>

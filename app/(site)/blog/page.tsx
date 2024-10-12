@@ -39,6 +39,7 @@ export default function BlogPosts() {
   useEffect(() => {
     fetchPosts()
   }, [])
+  
   //To handle previous page
   const goToPreviousPage = () => {
     if (currentPage > 1) {
