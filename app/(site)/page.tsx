@@ -25,14 +25,43 @@ export default function Home() {
   const [data, setData] = useState()
 
   const onClickContactUs = () => {
-    router.push("/contact")
-  }
+    if (data) {
+      if (data.homeSectionOne) {
+        router.push(data.homeSectionOne.callToActionLeft.routes);
+      } else if (data.homeSectionTwo) {
+        router.push(data.homeSectionTwo.callToActionLeft.routes);
+      }
+    }
+  };
+
+  // const onClickContactUs = () => {
+  //   if (data) {
+  //     router.push(data.homeSectionOne.callToActionLeft.routes)
+  //   }
+  // }
+
+  // const onClickAbout = () => {
+  //   if (data) {
+  //     router.push(data.homeSectionOne.callToActionRight.routes)
+  //   }
+  // }
+
+  const onClickAbout = () => {
+    if (data) {
+      if (data.homeSectionOne) {
+        router.push(data.homeSectionOne.callToActionRight.routes);
+      } else if (data.homeSectionTwo) {
+        router.push(data.homeSectionTwo.callToActionRight.routes);
+      }
+    }
+  };
 
   const fetchData = async () => {
     const res = await axios.get(
-      "https://say9s8oc.api.sanity.io/v2021-10-21/data/query/production?query=*%5B_type%20%3D%3D%20%22homeContent%22%5D%20%7B%0A%20%20_id%2C%0A%20%20_createdAt%2C%0A%20%20title%2C%0A%20%20%22homeSectionOne%22%3A%20homeSectionOne%20%7B%0A%20%20%20%20title%2C%0A%20%20%20%20description%2C%0A%20%20%20%20%22imageUrl%22%3A%20banner.asset%20-%3E%20url%2C%0A%20%20%20%20%22callToActionText%22%3A%20callToAction-%3EbuttonText%0A%20%20%7D%2C%0A%20%20%22homeSectionTwo%22%3A%20homeSectionTwo%20%7B%0A%20%20%20%20title%2C%0A%20%20%20%20description%2C%0A%20%20%20%20%22imageUrl%22%3A%20image.asset-%3Eurl%2C%0A%20%20%20%20%22callToActionLeftText%22%3A%20callToActionLeft-%3EbuttonText%2C%0A%20%20%20%20%22callToActionRightText%22%3A%20callToActionRight-%3EbuttonText%0A%20%20%7D%2C%0A%20%20%22homeSectionThree%22%3A%20homeSectionThree%20%7B%0A%20%20%20%20titleLeft%2C%0A%20%20%20%20descriptionLeft%2C%0A%20%20%20%20%22imageLeftUrl%22%3A%20imageleft.asset-%3Eurl%2C%0A%20%20%20%20titleMiddle%2C%0A%20%20%20%20descriptionMiddle%2C%0A%20%20%20%20%22imageMiddleUrl%22%3A%20imageMiddle.asset-%3Eurl%2C%0A%20%20%20%20titleRight%2C%0A%20%20%20%20descriptionRight%2C%0A%20%20%20%20%22imageRightUrl%22%3A%20imageRight.asset-%3Eurl%0A%20%20%7D%0A%7D"
+      "https://say9s8oc.api.sanity.io/v2021-10-21/data/query/production?query=*%5B_type%20%3D%3D%20%22homeContent%22%5D%7B%0A%20%20%22homeSectionOne%22%3A%20homeSectionOne%7B%0A%20%20%20%20%22image%22%3A%20banner.asset-%3Eurl%2C%0A%20%20%20%20title%2C%0A%20%20%20%20description%2C%0A%20%20%20%20%20%20callToActionLeft%20-%3E%20%7B%0A%20%20%20%20%20%20buttonText%2C%0A%20%20%20%20%20%20routes%0A%20%20%20%20%7D%2C%20%20%20%0A%20%20%20%20%20callToActionRight%20-%3E%20%7B%0A%20%20%20%20%20%20buttonText%2C%0A%20%20%20%20%20%20routes%0A%20%20%20%20%7D%2C%0A%20%20%7D%2C%0A%20%20%22homeSectionTwo%22%3A%20homeSectionTwo%7B%0A%20%20%20%20%22image%22%3A%20image.asset-%3Eurl%2C%0A%20%20%20%20title%2C%0A%20%20%20%20description%2C%0A%20%20%20%20%20callToActionLeft%20-%3E%20%7B%0A%20%20%20%20%20%20buttonText%2C%0A%20%20%20%20%20%20routes%0A%20%20%20%20%7D%2C%20%20%20%0A%20%20%20%20%20callToActionRight%20-%3E%20%7B%0A%20%20%20%20%20%20buttonText%2C%0A%20%20%20%20%20%20routes%0A%20%20%20%20%7D%2C%0A%20%20%7D%2C%0A%20%20%22homeSectionThree%22%3A%20homeSectionThree%7B%0A%20%20%20%20%22imageLeft%22%3A%20imageleft.asset-%3Eurl%2C%0A%20%20%20%20titleLeft%2C%0A%20%20%20%20descriptionLeft%2C%0A%20%20%20%20%22imageMiddle%22%3A%20imageMiddle.asset-%3Eurl%2C%0A%20%20%20%20titleMiddle%2C%0A%20%20%20%20descriptionMiddle%2C%0A%20%20%20%20%22imageRight%22%3A%20imageRight.asset-%3Eurl%2C%0A%20%20%20%20titleRight%2C%0A%20%20%20%20descriptionRight%0A%20%20%7D%0A%7D"
     )
-      if(res){ 
+    if(res){ 
+      console.log(res.data.result[0])
       setData(res.data.result[0])
     }
     console.log(res.data.result)
@@ -45,7 +74,6 @@ export default function Home() {
     console.log(data)
   }, [data])
 
-  console.log(data?.homeSectionOne?.callToAction?.buttonText)
 
   return (
     <div>
@@ -68,15 +96,19 @@ export default function Home() {
               {data?.homeSectionOne?.description?.[0]?.children?.[0]?.text}
             </p>
             <div className="flex flex-col gap-4 md:flex-row justify-center mt-4">
-              {/* <Button title={"Contact Us"} onClick={onClickContactUs} /> */}
-              <Button 
-                title={data?.homeSectionOne?.callToAction?.callToActionText} onCLick={data?.homeSectionOne?.callToAction?.routes} 
-              />
-              <Button
-                title={"Learn More"}
-                styleType="white"
-                onClick={onClickContactUs}
-              />
+              {data && (
+                <Button
+                  title={data?.homeSectionOne.callToActionLeft.buttonText}
+                  onClick={onClickContactUs}
+                />
+              )}
+              {data && (
+                <Button
+                  title={data?.homeSectionOne.callToActionRight.buttonText}
+                  styleType="white"
+                  onClick={onClickAbout}
+                />
+              )}
             </div>
           </div>
         </div>
@@ -93,8 +125,19 @@ export default function Home() {
             </p>
 
             <div className="flex flex-col gap-4 md:flex-row justify-center mt-4">
-              <Button title={"Contact Us"} onClick={onClickContactUs} />
-              <Button title={"Learn More"} onClick={onClickContactUs} />
+              {data && (
+                  <Button
+                    title={data?.homeSectionTwo.callToActionLeft.buttonText}
+                    onClick={onClickContactUs}
+                  />
+              )}
+              {data && (
+                <Button
+                  title={data?.homeSectionTwo.callToActionRight.buttonText}
+                  styleType="white"
+                  onClick={onClickAbout}
+                />
+              )}
             </div>
           </div>
 
