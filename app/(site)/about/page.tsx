@@ -1,11 +1,11 @@
 "use client"
 
-import React, {useEffect, useState} from "react"
+import React, { useEffect, useState } from "react"
 import Image from "next/image"
 import Link from "next/link"
 import aboutusbanner from "@/assets/aboutusbanner.jpeg"
 import Button from "@/components/Button"
-import { useRouter} from "next/navigation"
+import { useRouter } from "next/navigation"
 import services1 from "@/assets/services1.jpg"
 import services2 from "@/assets/services2.jpg"
 import services3 from "@/assets/services3.jpg"
@@ -23,21 +23,23 @@ export default function About(props: Props) {
   const [data, setData] = useState()
 
   const onClickContactUs = () => {
-    router.push("/contact")
+    if (data) {
+      router.push(data.aboutSectionOne.callToAction.routes)
+    }
   }
 
   const fetchData = async () => {
     const res = await axios.get(
-      "https://say9s8oc.api.sanity.io/v2021-10-21/data/query/production?query=*%5B_type%20%3D%3D%20%22aboutContent%22%5D%20%7B%0A%20%20_id%2C%0A%20%20_createdAt%2C%0A%20%20%22aboutSectionOne%22%3A%20aboutSectionOne%20%7B%0A%20%20%20%20title%2C%0A%20%20%20%20description%5B%5D%7B%0A%20%20%20%20%20%20...%0A%20%20%20%20%7D%2C%0A%20%20%20%20%22imageUrl%22%3A%20banner.asset-%3Eurl%2C%0A%20%20%20%20%22callToActionText%22%3A%20callToAction-%3EbuttonText%0A%20%20%7D%2C%0A%20%20%22aboutSectionTwo%22%3A%20aboutSectionTwo%20%7B%0A%20%20%20%20titleTop%2C%0A%20%20%20%20descriptionTop%5B%5D%7B%0A%20%20%20%20%20%20...%0A%20%20%20%20%7D%2C%0A%20%20%20%20%22imageTopUrl%22%3A%20imageTop.asset-%3Eurl%2C%0A%20%20%20%20titleBottom%2C%0A%20%20%20%20descriptionBottom%5B%5D%7B%0A%20%20%20%20%20%20...%0A%20%20%20%20%7D%2C%0A%20%20%20%20%22imageBottomUrl%22%3A%20imageBottom.asset-%3Eurl%0A%20%20%7D%2C%0A%20%20%22aboutSectionThree%22%3A%20aboutSectionThree%20%7B%0A%20%20%20%20titleLeft%2C%0A%20%20%20%20descriptionLeft%5B%5D%7B%0A%20%20%20%20%20%20...%0A%20%20%20%20%7D%2C%0A%20%20%20%20titleRight%2C%0A%20%20%20%20descriptionRight%5B%5D%7B%0A%20%20%20%20%20%20...%0A%20%20%20%20%7D%0A%20%20%7D%0A%7D"
+      "https://say9s8oc.api.sanity.io/v2021-10-21/data/query/production?query=*%5B_type%20%3D%3D%20%22aboutContent%22%5D%7B%0A%20%20%22aboutSectionOne%22%3A%20aboutSectionOne%7B%0A%20%20%20%20banner%2C%0A%20%20%20%20title%2C%0A%20%20%20%20description%2C%0A%20%20%20%20callToAction%20-%3E%20%7B%0A%20%0A%20%20%20%20%20%20buttonText%2C%0A%20%20%20%20%20%20routes%0A%20%20%20%20%7D%2C%0A%20%20%7D%2C%0A%20%20%22aboutSectionTwo%22%3A%20aboutSectionTwo%7B%0A%20%20%20%20titleTop%2C%0A%20%20%20%20descriptionTop%2C%0A%20%20%20%20imageTop%2C%0A%20%20%20%20titleBottom%2C%0A%20%20%20%20descriptionBottom%2C%0A%20%20%20%20imageBottom%0A%20%20%7D%2C%0A%20%20%22aboutSectionThree%22%3A%20aboutSectionThree%7B%0A%20%20%20%20titleLeft%2C%0A%20%20%20%20descriptionLeft%2C%0A%20%20%20%20titleRight%2C%0A%20%20%20%20descriptionRight%0A%20%20%7D%0A%7D%0A"
     )
-      if(res){ 
+    if (res) {
       setData(res.data.result[0])
     }
     console.log(res.data.result)
   }
 
   useEffect(() => {
-    if (!data){
+    if (!data) {
       fetchData()
     }
     console.log(data)
@@ -55,11 +57,17 @@ export default function About(props: Props) {
           <div className="absolute inset-0 flex items-center justify-center">
             <div className="text-center px-4 md:px-0">
               <p className="text-5xl md:text-6xl font-merriweather text-[#FF5757] mb-6">
-              {data?.aboutSectionOne?.title}
+                {data?.aboutSectionOne?.title}
               </p>
-              <p className="text-4xl mb-6">{data?.aboutSectionOne?.description?.[0]?.children?.[0]?.text}</p>
-              <Button title={data?.} onClick={onClickContactUs} />
-              
+              <p className="text-4xl mb-6">
+                {data?.aboutSectionOne?.description?.[0]?.children?.[0]?.text}
+              </p>
+              {data && (
+                <Button
+                  title={data.aboutSectionOne.callToAction.buttonText}
+                  onClick={onClickContactUs}
+                />
+              )}
             </div>
           </div>
         </div>
@@ -73,7 +81,10 @@ export default function About(props: Props) {
                 {data?.aboutSectionTwo?.titleTop}
               </h2>
               <p>
-              {data?.aboutSectionTwo?.descriptionTop?.[0]?.children?.[0]?.text}
+                {
+                  data?.aboutSectionTwo?.descriptionTop?.[0]?.children?.[0]
+                    ?.text
+                }
               </p>
             </div>
             <div className="md:w-1/2 aspect-[16/9] overflow-hidden  order-1 md:order-2">
@@ -90,10 +101,13 @@ export default function About(props: Props) {
           <div className="max-w-[1440px] flex flex-col md:flex-row items-center justify-center pb-12 md:gap-12">
             <div className="md:w-1/2   order-1 md:order-2">
               <h2 className="text-[#FF5757] font-bold mb-4 mt-2">
-              {data?.aboutSectionTwo?.titleBottom}
+                {data?.aboutSectionTwo?.titleBottom}
               </h2>
               <p>
-                {data?.aboutSectionTwo?.descriptionBottom?.[0]?.children?.[0]?.text}
+                {
+                  data?.aboutSectionTwo?.descriptionBottom?.[0]?.children?.[0]
+                    ?.text
+                }
               </p>
             </div>
             <div className="md:w-1/2 aspect-[16/9] overflow-hidden  order-2 md:order-1">
@@ -235,15 +249,22 @@ export default function About(props: Props) {
 
       <div className="max-w-[1440px] flex flex-col md:flex-row items-center justify-center gap-y-8 md:gap-y-0 md:gap-x-10 mx-4 md:mx-0 mb-16 px-16">
         <div className="md:w-1/2">
-          <h2 className="text-[#FF5757] font-bold text-3xl">{data?.aboutSectionThree?.titleLeft}</h2>
+          <h2 className="text-[#FF5757] font-bold text-3xl">
+            {data?.aboutSectionThree?.titleLeft}
+          </h2>
           <p>
             {data?.aboutSectionThree?.descriptionLeft?.[0]?.children?.[0]?.text}
           </p>
         </div>
         <div className="md:w-1/2">
-          <h2 className="text-[#FF5757] font-bold text-3xl">{data?.aboutSectionThree?.titleRight}</h2>
+          <h2 className="text-[#FF5757] font-bold text-3xl">
+            {data?.aboutSectionThree?.titleRight}
+          </h2>
           <p>
-            {data?.aboutSectionThree?.descriptionRight?.[0]?.children?.[0]?.text}
+            {
+              data?.aboutSectionThree?.descriptionRight?.[0]?.children?.[0]
+                ?.text
+            }
           </p>
         </div>
       </div>
