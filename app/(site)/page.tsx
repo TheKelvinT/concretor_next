@@ -45,6 +45,8 @@ export default function Home() {
     console.log(data)
   }, [data])
 
+  console.log(data?.homeSectionOne?.callToAction?.buttonText)
+
   return (
     <div>
       <div className="relative">
@@ -66,7 +68,10 @@ export default function Home() {
               {data?.homeSectionOne?.description?.[0]?.children?.[0]?.text}
             </p>
             <div className="flex flex-col gap-4 md:flex-row justify-center mt-4">
-              <Button title={"Contact Us"} onClick={onClickContactUs} />
+              {/* <Button title={"Contact Us"} onClick={onClickContactUs} /> */}
+              <Button 
+                title={data?.homeSectionOne?.callToAction?.callToActionText} onCLick={data?.homeSectionOne?.callToAction?.routes} 
+              />
               <Button
                 title={"Learn More"}
                 styleType="white"

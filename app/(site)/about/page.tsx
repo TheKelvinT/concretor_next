@@ -58,7 +58,7 @@ export default function About(props: Props) {
               {data?.aboutSectionOne?.title}
               </p>
               <p className="text-4xl mb-6">{data?.aboutSectionOne?.description?.[0]?.children?.[0]?.text}</p>
-              <Button title={"Contact Us"} onClick={onClickContactUs} />
+              <Button title={data?.} onClick={onClickContactUs} />
               
             </div>
           </div>
