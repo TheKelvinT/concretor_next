@@ -20,7 +20,7 @@ export default function Contact() {
 
   const handleChange = (e: any) => {
     const { name, value } = e.target
-    setError(!error)
+    // setError(!error)
     console.log(e.target.value)
     setFormData({
       ...formData,
@@ -87,10 +87,10 @@ export default function Contact() {
   }
 
   return (
-    <div className = "w-full flex items-center justify-center">
+    <div className="w-full flex items-center justify-center">
       <div className="flex flex-col md:flex-row px-3 py-12 md:px-16 md:py-16 md:max-w-[1440px]">
         <div
-          className="md:w-1/2 px-5 py-10 md:pl-6 md:pr-16 py-16 border border-white bg-white"
+          className="md:w-1/2 px-5  md:pl-6 md:pr-16 py-8 border border-white bg-white"
           style={{ boxShadow: "0 4px 6px rgba(0, 0, 0, 0.25)" }}
         >
           <div className="flex flex-col">
@@ -100,8 +100,8 @@ export default function Contact() {
             <p className="mb-4 md:mb-14">
               Have questions or need assistance? We&apos;re here to help! Reach
               out to us through any of the methods below, and our team will get
-              back to you as soon as possible. We look forward to connecting with
-              you.
+              back to you as soon as possible. We look forward to connecting
+              with you.
             </p>
             <form onSubmit={handleSubmit}>
               <div className="flex flex-col md:flex-row gap-4">
@@ -164,7 +164,7 @@ export default function Contact() {
               ) : null}
             </form>
             <div className="flex flex-col md:flex-row justify-center md:gap-10 mt-12 md:mt-16">
-              <div className="flex flex-row gap-6 md:w-1/2 mb-4">
+              <div className="flex flex-row gap-6 md:w-1/2 mb-8">
                 <Image
                   src={ContactUsPageIcon1}
                   alt="ContainUsPageIcon1"
@@ -177,13 +177,13 @@ export default function Contact() {
                   Selangor
                 </p>
               </div>
-              <div className="md:w-1/2 pl-12 md:pl-0 mb-4">
+              <div className="md:w-1/2 pl-12 md:pl-0 mb-8">
                 <p>Mon to Fri - 8am to 5pm</p>
                 <p>Saturday - 8am - 12pm</p>
                 <p>Sunday & Public Holidays - Closed</p>
               </div>
             </div>
-            <div className="flex flex-col md:flex-row justify-center md:gap-10">
+            <div className="flex flex-col md:flex-row justify-start gap-4 md:gap-10">
               <div className="flex flex-row gap-6 w-1/2 mb-4">
                 <Image
                   src={whatsapp}
@@ -194,23 +194,23 @@ export default function Contact() {
                 />
                 <p>+6012 234 4444</p>
               </div>
-              <div className="flex flex-row gap-6 w-1/2">
+              {/* <div className="flex flex-row gap-5 w-1/2">
                 <p>Follow Us</p>
                 <Image
                   src={facebook}
                   alt="facebook"
-                  width={24}
-                  height={24}
+                  width={40}
+                  height={40}
                   className="object-contain w-6 h-6"
                 />
                 <Image
                   src={tiktok}
                   alt="tiktok"
-                  width={24}
-                  height={24}
+                  width={40}
+                  height={40}
                   className="object-contain w-6 h-6"
                 />
-              </div>
+              </div> */}
             </div>
           </div>
         </div>

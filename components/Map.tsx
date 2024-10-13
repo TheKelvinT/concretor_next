@@ -1,10 +1,11 @@
 import React, { useState } from "react"
 import {
   GoogleMap,
-  LoadScript,
   Marker,
   InfoWindow,
+  useJsApiLoader,
 } from "@react-google-maps/api"
+import { Spin } from "antd"
 
 const containerStyle = {
   width: "100%",
@@ -20,39 +21,43 @@ const Map = () => {
   const [showInfo, setShowInfo] = useState(true)
   const [markerPosition, setMarkerPosition] = useState(center)
 
-  return (
-    <>
-      {process.env.NEXT_PUBLIC_MAPS_API_KEY && (
-        <LoadScript googleMapsApiKey={process.env.NEXT_PUBLIC_MAPS_API_KEY}>
-          <GoogleMap
-            mapContainerStyle={containerStyle}
-            center={center}
-            zoom={15}
-          >
-            {/* Place marker */}
-            <Marker
-              position={markerPosition}
-              onClick={() => setShowInfo(true)}
-            />
+  // Use the useJsApiLoader hook to handle loading
+  const apiKey = process.env.NEXT_PUBLIC_MAPS_API_KEY || ""
 
-            {/* Conditionally show InfoWindow when marker is clicked */}
-            {showInfo && (
-              <InfoWindow
-                position={markerPosition} // Anchor InfoWindow to marker position
-                onCloseClick={() => setShowInfo(false)}
-              >
-                <div className="w-[240px]">
-                  <p className="font-bold">
-                    CONCRETOR Engineering Office - Structural Building Repair
-                  </p>
-                  <p>Building restoration service</p>
-                </div>
-              </InfoWindow>
-            )}
-          </GoogleMap>
-        </LoadScript>
+  // Use the useJsApiLoader hook to handle loading
+  const { isLoaded, loadError } = useJsApiLoader({
+    googleMapsApiKey: apiKey,
+  })
+
+  // Custom loading message
+  if (!isLoaded) {
+    return (
+      <div className="flex items-center justify-center h-screen">
+        <Spin />
+      </div>
+    )
+  }
+
+  return (
+    <GoogleMap mapContainerStyle={containerStyle} center={center} zoom={15}>
+      {/* Place marker */}
+      <Marker position={markerPosition} onClick={() => setShowInfo(true)} />
+
+      {/* Conditionally show InfoWindow when marker is clicked */}
+      {showInfo && (
+        <InfoWindow
+          position={markerPosition}
+          onCloseClick={() => setShowInfo(false)}
+        >
+          <div className="w-[240px]">
+            <p className="font-bold">
+              CONCRETOR Engineering Office - Structural Building Repair
+            </p>
+            <p>Building restoration service</p>
+          </div>
+        </InfoWindow>
       )}
-    </>
+    </GoogleMap>
   )
 }
 
