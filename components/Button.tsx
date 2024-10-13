@@ -1,47 +1,3 @@
-// import React from "react";
-
-// interface Props {
-//   title: string;
-//   onClick?: () => void;
-//   width?: string;
-//   loading?: boolean;
-//   padding?: string;
-//   noIcon?: boolean;
-// }
-
-// function Button({ title, onClick, width, loading, padding, noIcon }: Props) {
-//   return (
-//     <button
-//       className={`ease group relative z-10 box-border inline-flex ${
-//         width ? width : "w-auto"
-//       } ${padding} cursor-pointer items-center justify-center overflow-hidden border font-gothic text-[10px]  border-main bg-primary px-6 py-3 text-main hover:bg-primary-100/80 transition-all duration-300 focus:outline-none`}
-//       onClick={onClick}
-//     >
-//       <span className="relative z-20 flex items-center">
-//         {noIcon && (
-//           <svg
-//             className="relative mr-2 h-5 w-5 flex-shrink-0 text-white"
-//             fill="none"
-//             stroke="currentColor"
-//             viewBox="0 0 24 24"
-//             xmlns="http://www.w3.org/2000/svg"
-//           >
-//             <path
-//               strokeLinecap="round"
-//               strokeLinejoin="round"
-//               strokeWidth="2"
-//               d="M13 10V3L4 14h7v7l9-11h-7z"
-//             ></path>
-//           </svg>
-//         )}
-//         {loading ? "Loading..." : title}
-//       </span>
-//     </button>
-//   );
-// }
-
-// export default Button;
-
 import React from "react"
 
 interface Props {
@@ -50,16 +6,16 @@ interface Props {
   width?: string
   loading?: boolean
   padding?: string
-  styleType?: "green" | "white" // New prop to handle styling
+  styleType?: "green" | "white" // Prop to handle styling
 }
 
 function Button({
   title,
   onClick,
-  width,
-  loading,
-  padding,
-  styleType = "green",
+  width = "w-full md:w-auto", // Default to full width on small screens
+  loading = false, // Default to not loading
+  padding = "", // Default padding if not specified
+  styleType = "green", // Default style type
 }: Props) {
   const buttonStyles =
     styleType === "green"
@@ -68,11 +24,32 @@ function Button({
 
   return (
     <button
-      className={`relative inline-flex ${
-        width ? width : "w-full md:w-auto"
-      } ${padding} cursor-pointer shadow-md shadow-black/50  items-center justify-center overflow-hidden border rounded-[20px] font-bold text-[18px] ${buttonStyles} px-6 py-3 transition-all duration-300 focus:outline-none `}
+      className={`relative bg-primary inline-flex ${width} ${padding} cursor-pointer shadow-md  items-center justify-center overflow-hidden border rounded-[20px] font-bold text-[18px] ${buttonStyles} px-6 py-3 transition-all duration-300 focus:outline-none`}
       onClick={onClick}
+      disabled={loading} // Disable button if loading
+      aria-busy={loading} // Indicate loading state for accessibility
     >
+      {loading ? (
+        <svg
+          className="animate-spin h-5 w-5 mr-3 text-white" // Add a spinner for loading
+          fill="none"
+          viewBox="0 0 24 24"
+        >
+          <circle
+            className="opacity-25"
+            cx="12"
+            cy="12"
+            r="10"
+            stroke="currentColor"
+            strokeWidth="4"
+          />
+          <path
+            className="opacity-75"
+            fill="currentColor"
+            d="M4 12a8 8 0 018-8v8H4z"
+          />
+        </svg>
+      ) : null}
       {loading ? "Loading..." : title}
     </button>
   )
