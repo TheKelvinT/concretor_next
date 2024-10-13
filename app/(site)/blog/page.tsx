@@ -55,8 +55,8 @@ export default function BlogPosts() {
   }
 
   return (
-    <div className="flex flex-col items-center">
-      <h2 className = "font-bold">Featured Blogs</h2>
+    <div className="flex flex-col items-center py-16">
+      <h2 className = "font-bold mb-16">Featured Blogs</h2>
       {blogPosts.map((post, index) => (
         <div key={index} className="mb-7">
           <Card data={post} />
@@ -64,7 +64,6 @@ export default function BlogPosts() {
       ))}
 
       <div className="flex items-center space-x-2 mt-5">
-        {/* Previous Page Button */}
         <button
           onClick={goToPreviousPage}
           disabled={currentPage === 1}
@@ -75,7 +74,6 @@ export default function BlogPosts() {
           &lt;
         </button>
 
-        {/* Page Numbers */}
         {Array.from({ length: totalPages }, (_, index) => index + 1).map((number) => (
           <button
             key={number}
@@ -88,7 +86,6 @@ export default function BlogPosts() {
           </button>
         ))}
 
-        {/* Next Page Button */}
         <button
           onClick={goToNextPage}
           disabled={currentPage === totalPages}
@@ -99,6 +96,9 @@ export default function BlogPosts() {
           &gt;
         </button>
       </div>
+
+
+      
 
     </div>
   )

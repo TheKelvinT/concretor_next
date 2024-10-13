@@ -45,7 +45,7 @@ const Card: React.FC<CardProps> = ({ data}) => {
 
   return (
     <div
-      className="flex flex-row h-[303px] max-w-[1028px] border border-white bg-white py-4 px-4 rounded-lg"
+      className="flex flex-row h-[303px] w-[1028px] border border-white bg-white py-4 px-4 rounded-lg"
       style={{ boxShadow: "0 4px 6px rgba(0, 0, 0, 0.25)" }}
     >
       <img
