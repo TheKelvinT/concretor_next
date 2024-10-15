@@ -28,6 +28,12 @@ const blog = {
       ],
     },
     {
+      title: "Tags",
+      name: "tags",
+      type: "array",
+      of: [{ type: "string" }],
+    },
+    {
       name: "summary",
       title: "Summary",
       type: "array",

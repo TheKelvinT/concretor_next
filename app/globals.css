@@ -96,3 +96,12 @@ input::-webkit-inner-spin-button {
 .gm-ui-hover-effect {
   display: none !important;
 }
+
+.truncate-text {
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 4; /* Limit to 4 lines */
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+

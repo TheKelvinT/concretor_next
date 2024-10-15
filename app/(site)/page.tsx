@@ -21,11 +21,15 @@ import services8 from "@/assets/services8.jpg"
 import { useState, useEffect } from "react"
 import { IHomePageContent } from "@/types/Home"
 import { Spin } from "antd"
+import { IBlogPost } from "@/types/Blogs"
+import DescContainer from "@/components/DescContainer"
+import { PortableText } from "@portabletext/react"
+import urlBuilder from "@sanity/image-url"
 
 export default function Home() {
   const router = useRouter()
   const [data, setData] = useState<IHomePageContent>()
-  const [blogPosts, setBlogPosts] = useState([])
+  const [blogPosts, setBlogPosts] = useState<IBlogPost[]>([])
   const [loading, setLoading] = useState(false)
 
   const onClickContactUs = () => {
@@ -62,6 +66,9 @@ export default function Home() {
     }
   }
 
+  const onClickBlog = (data: IBlogPost) => {
+    router.push(`/blog/${data.slug}`)
+  }
   const fetchData = async () => {
     const res = await axios.get(
       "https://say9s8oc.api.sanity.io/v2021-10-21/data/query/production?query=*%5B_type%20%3D%3D%20%22homeContent%22%5D%7B%0A%20%20%22homeSectionOne%22%3A%20homeSectionOne%7B%0A%20%20%20%20%22image%22%3A%20banner.asset-%3Eurl%2C%0A%20%20%20%20title%2C%0A%20%20%20%20description%2C%0A%20%20%20%20%20%20callToActionLeft%20-%3E%20%7B%0A%20%20%20%20%20%20buttonText%2C%0A%20%20%20%20%20%20routes%0A%20%20%20%20%7D%2C%20%20%20%0A%20%20%20%20%20callToActionRight%20-%3E%20%7B%0A%20%20%20%20%20%20buttonText%2C%0A%20%20%20%20%20%20routes%0A%20%20%20%20%7D%2C%0A%20%20%7D%2C%0A%20%20%22homeSectionTwo%22%3A%20homeSectionTwo%7B%0A%20%20%20%20%22image%22%3A%20image.asset-%3Eurl%2C%0A%20%20%20%20title%2C%0A%20%20%20%20description%2C%0A%20%20%20%20%20callToActionLeft%20-%3E%20%7B%0A%20%20%20%20%20%20buttonText%2C%0A%20%20%20%20%20%20routes%0A%20%20%20%20%7D%2C%20%20%20%0A%20%20%20%20%20callToActionRight%20-%3E%20%7B%0A%20%20%20%20%20%20buttonText%2C%0A%20%20%20%20%20%20routes%0A%20%20%20%20%7D%2C%0A%20%20%7D%2C%0A%20%20%22homeSectionThree%22%3A%20homeSectionThree%7B%0A%20%20%20%20%22imageLeft%22%3A%20imageleft.asset-%3Eurl%2C%0A%20%20%20%20titleLeft%2C%0A%20%20%20%20descriptionLeft%2C%0A%20%20%20%20%22imageMiddle%22%3A%20imageMiddle.asset-%3Eurl%2C%0A%20%20%20%20titleMiddle%2C%0A%20%20%20%20descriptionMiddle%2C%0A%20%20%20%20%22imageRight%22%3A%20imageRight.asset-%3Eurl%2C%0A%20%20%20%20titleRight%2C%0A%20%20%20%20descriptionRight%0A%20%20%7D%0A%7D"
@@ -71,6 +78,17 @@ export default function Home() {
       setData(res.data.result[0])
       setLoading(false)
     }
+  }
+
+  const fetchBlogs = async () => {
+    const res = await axios.get(
+      "https://say9s8oc.api.sanity.io/v2021-10-21/data/query/production?query=*%5B_type%20%3D%3D%20%22blog%22%5D%20%7C%20order(_updatedAt%20desc)%20%7B%0A%20%20title%2C%0A%20%20%22slug%22%3A%20slug.current%2C%0A%20%20tags%2C%0A%20%20%22image%22%3A%20%7B%0A%20%20%20%20%22url%22%3A%20image.asset-%3Eurl%2C%0A%20%20%20%20%22alt%22%3A%20image.alt%0A%20%20%7D%2C%0A%20%20summary%5B%5D%20%7B%0A%20%20%20%20...%20%2F%2F%20returns%20all%20the%20blocks%20inside%20the%20summary%20array%0A%20%20%7D%2C%0A%20%20content%5B%5D%20%7B%0A%20%20%20%20...%2C%0A%20%20%20%20_type%20%3D%3D%20%22image%22%20%3D%3E%20%7B%0A%20%20%20%20%20%20%22url%22%3A%20asset-%3Eurl%2C%0A%20%20%20%20%20%20%22alt%22%3A%20alt%0A%20%20%20%20%7D%0A%20%20%7D%0A%7D%0A"
+    )
+    if (res) {
+      const firstThreeItems = res.data.result.slice(0, 3)
+      setBlogPosts(firstThreeItems)
+      setLoading(false)
+    }
     console.log(res.data.result)
   }
 
@@ -78,10 +96,30 @@ export default function Home() {
     if (!data) {
       setLoading(true)
       fetchData()
+      fetchBlogs()
     }
     console.log(data)
   }, [data])
 
+  const urlFor = (source: any) =>
+    urlBuilder({ projectId: "say9s8oc", dataset: "production" }).image(source)
+
+  const serializer = {
+    types: {
+      image: (props: { value: { asset?: any; alt?: string } }) => {
+        if (!props.value || !props.value.asset) {
+          return null // Return null or a placeholder image if the source is undefined or doesn't have the expected properties
+        }
+
+        const { asset, alt } = props.value
+        return (
+          <figure>
+            <img src={urlFor(asset)?.width(1200).url()} alt={alt} />
+          </figure>
+        )
+      },
+    },
+  }
   return (
     <>
       {data ? (
@@ -141,13 +179,18 @@ export default function Home() {
                 <div className="flex flex-col gap-4 md:flex-row justify-center md:justify-start mt-4">
                   {data && (
                     <Button
-                      title={data?.homeSectionTwo.callToActionLeft?.buttonText}
+                      title={
+                        data?.homeSectionTwo?.callToActionLeft?.buttonText || ""
+                      }
                       onClick={onClickContactUs}
                     />
                   )}
                   {data && (
                     <Button
-                      title={data?.homeSectionTwo.callToActionRight.buttonText}
+                      title={
+                        data?.homeSectionTwo?.callToActionRight?.buttonText ||
+                        ""
+                      }
                       styleType="white"
                       onClick={onClickAbout}
                     />
@@ -364,127 +407,42 @@ export default function Home() {
           <div className="flex flex-col justify-center items-center px-5 py-16 md:px-16 ">
             <h2 className="font-bold mb-10 text-center">Latest Articles</h2>
             <div className="flex gap-12 justify-center flex-wrap">
-              <div className="max-w-[400px]">
-                <div>
-                  <Image
-                    src={heroimg}
-                    alt="hero image"
-                    height={300}
-                    className="mb-2.5 object-cover w-full h-full"
-                  />
-                </div>
-                <div className="flex flex-row gap-x-7 mb-2.5 text-[#038885]">
-                  <p>Innovation</p>
-                  <p>Project Management</p>
-                </div>
-                <div className="">
-                  <p className="text-2xl font-bold mb-7">
-                    Experience the Difference <br /> with CONCRETOR , you will
-                    <br /> not regret it
-                  </p>
-                  <p className="mb-4">
-                    At CONCRETOR, we pride ourselves on delivering quality
-                    craftsmanship, completing projects on time, and ensuring
-                    customer satisfaction. With our <br />
-                    expertise and dedication, we guarantee exception At
-                    CONCRETOR, we pride ourselves on delivering quality
-                    craftsmanship, completing projects on time, and ensuring
-                    customer satisfaction. With our <br />
-                    expertise and dedication, we guarantee exception At
-                    CONCRETOR, we pride ourselves on delivering quality
-                    craftsmanship, completing projects on time, and ensuring
-                    customer satisfaction. With our <br />
-                    expertise and dedication, we guarantee exception At
-                    CONCRETOR, we pride ourselves on delivering quality
-                    craftsmanship, completing projects on time, and ensuring
-                    customer satisfaction. With our <br />
-                    expertise and dedication, we guarantee exception At
-                    CONCRETOR, we pride ourselves on delivering quality
-                    craftsmanship, completing projects on time, and ensuring
-                    customer satisfaction. With our <br />
-                    expertise and dedication, we guarantee exception At
-                    CONCRETOR, we pride ourselves on delivering quality
-                    craftsmanship, completing projects on time, and ensuring
-                    customer satisfaction. With our <br />
-                    expertise and dedication, we guarantee exception At
-                    CONCRETOR, we pride ourselves on delivering quality
-                    craftsmanship, completing projects on time, and ensuring
-                    customer satisfaction. With our <br />
-                    expertise and dedication, we guarantee exception At
-                    CONCRETOR, we pride ourselves on delivering quality
-                    craftsmanship, completing projects on time, and ensuring
-                    customer satisfaction. With our <br />
-                    expertise and dedication, we guarantee exception At
-                    CONCRETOR, we pride ourselves on delivering quality
-                    craftsmanship, completing projects on time, and ensuring
-                    customer satisfaction. With our <br />
-                    expertise and dedication, we guarantee exception
-                  </p>
-                </div>
-                <a href="" className="text-[#038885]">
-                  Read More
-                </a>
-              </div>
+              {blogPosts.map((post, index) => (
+                <div className="max-w-[400px]">
+                  <div className="h-[300px] mt-2.5">
+                    <img
+                      src={post.image.url}
+                      className="mb-2.5 object-cover w-full h-full"
+                    />
+                  </div>
+                  <div className="flex flex-row gap-x-7 mb-2.5 mt-2.5 text-[#038885]">
+                    {post.tags && post.tags.map((tag) => <p>{tag}</p>)}
+                  </div>
+                  <div
+                    className="text-2xl font-bold mb-5 cursor-pointer"
+                    onClick={() => onClickBlog(post)}
+                  >
+                    {post.title}
+                  </div>
 
-              <div className="max-w-[400px]">
-                <div>
-                  <Image
-                    src={heroimg}
-                    alt="hero image"
-                    height={300}
-                    className="mb-2.5 object-cover w-full h-full"
-                  />
-                </div>
-                <div className="flex flex-row gap-x-7 mb-2.5 text-[#038885]">
-                  <p>Innovation</p>
-                  <p>Project Management</p>
-                </div>
-                <div className="">
-                  <p className="text-2xl font-bold mb-7">
-                    Experience the Difference <br /> with CONCRETOR , you will
-                    <br /> not regret it
-                  </p>
-                  <p className="mb-4">
-                    At CONCRETOR, we pride ourselves on delivering quality
-                    craftsmanship, completing projects on time, and ensuring
-                    customer satisfaction. With our <br />
-                    expertise and dedication, we guarantee exception...
-                  </p>
-                </div>
-                <a href="" className="text-[#038885]">
-                  Read More
-                </a>
-              </div>
+                  <DescContainer>
+                    <div className="truncate-text h-20">
+                      <PortableText
+                        value={post?.summary ?? []}
+                        onMissingComponent={false}
+                        components={serializer}
+                      />
+                    </div>
+                  </DescContainer>
 
-              <div className="max-w-[400px]">
-                <div>
-                  <Image
-                    src={heroimg}
-                    alt="hero image"
-                    height={300}
-                    className="mb-2.5 object-cover w-full h-full"
-                  />
+                  <div
+                    className="text-[#038885] mt-2 cursor-pointer"
+                    onClick={() => onClickBlog(post)}
+                  >
+                    Read More
+                  </div>
                 </div>
-                <div className="flex flex-row gap-x-7 mb-2.5 text-[#038885]">
-                  <p>Innovation</p>
-                  <p>Project Management</p>
-                </div>
-                <div className="">
-                  <p className="text-2xl font-bold mb-7">
-                    Experience the Difference <br /> with CONCRETOR , you will
-                    <br /> not regret it
-                  </p>
-                  <p className="mb-4">
-                    At CONCRETOR, we pride ourselves on delivering quality
-                    craftsmanship, completing projects on time, and ensuring
-                    customer satisfaction. With our <br />
-                    expertise and dedication, we guarantee exception...
-                  </p>
-                </div>
-                <a href="" className="text-[#038885]">
-                  Read More
-                </a>
-              </div>
+              ))}
             </div>
           </div>
 
