@@ -413,7 +413,8 @@ export default function Home() {
                     />
                   </div>
                   <div className="flex flex-row gap-x-7 mb-2.5 mt-2.5 text-[#038885]">
-                    {post.tags && post.tags.map((tag) => <p>{tag}</p>)}
+                    {post.tags &&
+                      post.tags.map((tag, index) => <p key={index}>{tag}</p>)}
                   </div>
                   <div
                     className="text-2xl font-bold mb-5 cursor-pointer"
