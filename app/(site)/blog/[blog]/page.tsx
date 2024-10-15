@@ -10,7 +10,10 @@ import {
   MailOutlined,
   WhatsAppOutlined,
   ShareAltOutlined,
+  FacebookFilled,
+  LinkedinFilled,
 } from "@ant-design/icons"
+import Card from "@/components/Card"
 import FacebookIcon from "../assets/facebook.svg"
 import InstagramIcon from "../assets/instagram-icon.svg"
 import LinkedinIcon from "../assets/linkedin-icon.svg"
@@ -23,31 +26,33 @@ import { Popover } from "antd"
 import axios from "axios"
 import { useParams } from "next/navigation"
 import DescContainer from "@/components/DescContainer"
+import { IBlogPost } from "@/types/Blogs"
+import Link from "next/link"
+import { useRouter } from "next/navigation"
 
 const SingleBlog = () => {
   // const loading = useLoadingStore((state: any) => state.loading);
   // const setLoading = useLoadingStore((state: any) => state.setLoading);
-  const [postData, setPostData] = useState<any>(null)
+  const [postData, setPostData] = useState<any>()
   const [blogs, setBlogs] = useState<any>(null)
   const [visible, setVisible] = useState(false)
   const [shuffledBlogs, setShuffledBlogs] = useState<any>([])
-
+  const [allPosts, setAllPosts] = useState<any>([])
+  const router = useRouter()
   const { blog } = useParams()
 
-  console.log(blog)
   const fetchData = async () => {
     try {
       const response = await axios.get(
-        "https://say9s8oc.api.sanity.io/v2021-10-21/data/query/production?query=*%5B_type%20%3D%3D%20%22blog%22%5D%20%7C%20order(_createdAt%20desc)%20%7B%0A%20%20_id%2C%0A%20%20_createdAt%2C%0A%20%20summary%2C%0A%20%20title%2C%0A%20%20%22slug%22%3A%20slug.current%2C%0A%20%20%22image%22%3A%20image.asset-%3Eurl%2C%0A%20%20content%0A%7D"
+        "https://say9s8oc.api.sanity.io/v2021-10-21/data/query/production?query=*%5B_type%20%3D%3D%20%22blog%22%5D%20%7C%20order(_updatedAt%20desc)%20%7B%0A%20%20title%2C%0A%20%20%22slug%22%3A%20slug.current%2C%0A%20%20tags%2C%0A%20%20%22image%22%3A%20%7B%0A%20%20%20%20%22url%22%3A%20image.asset-%3Eurl%2C%0A%20%20%20%20%22alt%22%3A%20image.alt%0A%20%20%7D%2C%0A%20%20summary%5B%5D%20%7B%0A%20%20%20%20...%20%2F%2F%20returns%20all%20the%20blocks%20inside%20the%20summary%20array%0A%20%20%7D%2C%0A%20%20content%5B%5D%20%7B%0A%20%20%20%20...%2C%0A%20%20%20%20_type%20%3D%3D%20%22image%22%20%3D%3E%20%7B%0A%20%20%20%20%20%20%22url%22%3A%20asset-%3Eurl%2C%0A%20%20%20%20%20%20%22alt%22%3A%20alt%0A%20%20%20%20%7D%0A%20%20%7D%0A%7D%0A"
       )
-      console.log(response)
-      setBlogs(blogs)
+      setAllPosts(response)
       const matchedBlog = response.data.result.find(
         (post: any) => post.slug === blog
       )
 
       if (matchedBlog) {
-        console.log("Blog found:", matchedBlog)
+        setBlogs(blogs)
       } else {
         console.log("Blog not found")
       }
@@ -60,18 +65,22 @@ const SingleBlog = () => {
   useEffect(() => {
     fetchData()
   }, [])
+  useEffect(() => {
+    if (postData) {
 
+      const filteredBlogs = allPosts.data.result.filter(
+        (blog: any) => blog.slug !== postData.slug
+      )
+
+   
+      const shuffledBlogs = shuffleArray(filteredBlogs)
+      setShuffledBlogs(shuffledBlogs)
+ 
+    }
+  }, [postData])
   //Logic for recommend blogs
 
   //Filtered blog
-
-  useEffect(() => {
-    if (blogs) {
-      const filteredBlogs = blogs.filter((blog: any) => blog.slug !== blog)
-      const shuffledBlogs = shuffleArray(filteredBlogs)
-      setShuffledBlogs(shuffledBlogs)
-    }
-  }, [blogs])
 
   const shuffleArray = (array: any[]) => {
     const newArray = [...array]
@@ -87,6 +96,16 @@ const SingleBlog = () => {
   const FacebookShareUrl = `http://www.facebook.com/sharer/sharer.php?u=${url}&t=${title}`
   const WhatsappShareUrl = `https://api.whatsapp.com/send?text=${url}`
   const LinkedShareUrl = `https://www.linkedin.com/sharing/share-offsite/?url=${url}`
+
+  const onLinkClick = (data: string) => {
+    if (data == "fb") {
+      router.push(FacebookShareUrl)
+    } else if ((data = "li")) {
+      router.push(LinkedShareUrl)
+    } else {
+      router.push(WhatsappShareUrl)
+    }
+  }
 
   const handleCopyLink = () => {
     const currentURL = window.location.href
@@ -131,17 +150,24 @@ const SingleBlog = () => {
       },
     },
   }
+
+
   return (
     <div>
       <div className="relative single-blog">
         <div className=" mx-auto max-w-[1920px] h-[60vh] overflow-hidden z-0">
-          {/* <CustomImage Imgsrc={postData?.image} alt="Blog-hero" /> */}
+          {postData && (
+            <CustomImage Imgsrc={postData?.image.url} alt="Blog-hero" />
+          )}
         </div>
         <div className="flex flex-col">
           <div className=" w-11/12 lg:w-3/5  -mt-40 mb-12 md:-mt-64 mx-auto bg-white border border-main rounded-t-lg overflow-hidden relative z-10 max-w-[900px]">
-            <div className="p-6 pb-28 md:pb-48 pt-16 md:pt-32 sm:px-12 lg:px-24 ">
-              <div className="text-[36px] max-w-[650px] mx-auto font-marcellus pb-14 text-center break-words text-main ">
+            <div className="p-6 pb-28 md:pb-40 pt-16 md:pt-24 sm:px-12 lg:px-24 ">
+              <div className="text-[36px] max-w-[650px] mx-auto font-marcellus pb-8 text-center break-words text-main ">
                 {postData?.title}
+              </div>
+              <div className="text-center font-marcellus text-sm mb-12">
+                {formattedDate}
               </div>
               <DescContainer>
                 <PortableText
@@ -155,23 +181,21 @@ const SingleBlog = () => {
           <div className=" flex flex-col items-center justify-center h-32 text-center bg-white px-12 mx-auto -mt-28 z-30">
             <div className="font-marcellus text-[35px]">Share This Article</div>
             <div className="my-4 flex justify-center items-center gap-x-12">
-              {/* <Link to={FacebookShareUrl} target="_blank">
-                  <img src={FacebookIcon} alt="" />
-                </Link>
-                <Link to={LinkedShareUrl} target="_blank">
-                  <img src={LinkedinIcon} alt="" />
-                </Link>
-                <Popover content="Link copied!" open={visible} trigger="click">
-                  <ShareAltOutlined
-                    style={{ fontSize: "28px", color: "#595D3C" }}
-                    onClick={handleCopyLink}
-                  />
-                </Popover>
-                <Link to={WhatsappShareUrl} target="_blank">
-                  <WhatsAppOutlined
-                    style={{ fontSize: "28px", color: "#595D3C" }}
-                  />
-                </Link> */}
+              <a href={FacebookShareUrl} target="_blank">
+                <FacebookFilled className="text-3xl text-primary cursor-pointer" />
+              </a>
+              <a href={LinkedShareUrl} target="_blank">
+                <LinkedinFilled className="text-3xl text-primary cursor-pointer" />
+              </a>
+              <Popover content="Link copied!" open={visible} trigger="click">
+                <ShareAltOutlined
+                  className="text-3xl text-primary cursor-pointer"
+                  onClick={handleCopyLink}
+                />
+              </Popover>
+              <a href={WhatsappShareUrl} target="_blank">
+                <WhatsAppOutlined className="text-3xl text-primary cursor-pointer" />
+              </a>
             </div>
           </div>
         </div>
@@ -186,37 +210,7 @@ const SingleBlog = () => {
             )}
 
             {shuffledBlogs.slice(0, 2).map((blog: any, index: number) => (
-              <div
-                key={blog._id}
-                className={`w-full  md:flex xl:gap-x-16 gap-x-8 ${
-                  index === 1 ? "sm:flex-row-reverse" : ""
-                }`}
-              >
-                <a href={`/blog/${blog.slug}`}>
-                  <div className="basis-2/3 md:w-[480px] lg:w-[580px] h-[366px] overflow-hidden bg-main">
-                    <CustomImage Imgsrc={blog.image} alt={blog.title} />
-                  </div>
-                </a>
-                <div
-                  className={` basis-1/3 flex-col flex justify-center  mt-4 md:mt-0 gap-y-4 md:w-96  ${
-                    index === 1 ? "md:items-end" : "items-start"
-                  }`}
-                >
-                  <a href={`/blog/${blog.slug}`}>
-                    <div className="text-main text-[17px] underline underline-offset-2">
-                      {blog.title}
-                    </div>
-                  </a>
-
-                  <div className="py-4">
-                    <Button
-                      title="READ MORE"
-                      width="w-44"
-                      // path={`/blog/${blog.slug}`}
-                    />
-                  </div>
-                </div>
-              </div>
+              <Card data={blog} />
             ))}
           </div>
         </div>

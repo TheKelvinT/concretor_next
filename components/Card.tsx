@@ -11,7 +11,6 @@ interface CardProps {
 
 const Card: React.FC<CardProps> = ({ data }) => {
   const router = useRouter()
-  console.log(data)
 
   const urlFor = (source: any) =>
     urlBuilder({ projectId: "9cqbua0r", dataset: "production" }).image(source)

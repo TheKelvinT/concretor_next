@@ -21,7 +21,7 @@ export default function Contact() {
   const handleChange = (e: any) => {
     const { name, value } = e.target
     // setError(!error)
-    console.log(e.target.value)
+
     setFormData({
       ...formData,
       [name]: value,
