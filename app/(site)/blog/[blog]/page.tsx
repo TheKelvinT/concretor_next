@@ -206,7 +206,7 @@ const SingleBlog = () => {
             )}
 
             {shuffledBlogs.slice(0, 2).map((blog: any, index: number) => (
-              <Card data={blog} />
+              <Card data={blog} key={index} />
             ))}
           </div>
         </div>

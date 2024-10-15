@@ -254,7 +254,7 @@ export default function About(props: Props) {
             </div>
 
             <p className="text-lg mt-10 mb-4 text-center">
-              Need expert solutions for your next project? Let's discuss.
+              Need expert solutions for your next project? Let&apos;s discuss.
             </p>
             <Button title={"Contact Us"} onClick={onClickContactUs} />
           </div>
