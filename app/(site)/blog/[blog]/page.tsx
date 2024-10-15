@@ -67,15 +67,12 @@ const SingleBlog = () => {
   }, [])
   useEffect(() => {
     if (postData) {
-
       const filteredBlogs = allPosts.data.result.filter(
         (blog: any) => blog.slug !== postData.slug
       )
 
-   
       const shuffledBlogs = shuffleArray(filteredBlogs)
       setShuffledBlogs(shuffledBlogs)
- 
     }
   }, [postData])
   //Logic for recommend blogs
@@ -151,7 +148,6 @@ const SingleBlog = () => {
     },
   }
 
-
   return (
     <div>
       <div className="relative single-blog">
@@ -178,9 +174,9 @@ const SingleBlog = () => {
               </DescContainer>
             </div>
           </div>
-          <div className=" flex flex-col items-center justify-center h-32 text-center bg-white px-12 mx-auto -mt-28 z-30">
-            <div className="font-marcellus text-[35px]">Share This Article</div>
-            <div className="my-4 flex justify-center items-center gap-x-12">
+          <div className=" flex flex-col items-center justify-center h-32 text-center bg-white md:px-12 px-2 mx-auto -mt-28 z-30">
+            <div className="font-marcellus text-2xl ">Share This Article</div>
+            <div className="my-4 flex justify-center items-center gap-6 sm:gap-x-12">
               <a href={FacebookShareUrl} target="_blank">
                 <FacebookFilled className="text-3xl text-primary cursor-pointer" />
               </a>
@@ -204,7 +200,7 @@ const SingleBlog = () => {
             {shuffledBlogs.length === 0 ? (
               ""
             ) : (
-              <div className="font-marcellus text-[28px]">
+              <div className="font-marcellus text-2xl">
                 More Articles Like This
               </div>
             )}
