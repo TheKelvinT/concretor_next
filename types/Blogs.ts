@@ -23,22 +23,7 @@ export type IBlogPost = {
   }[];
   _id: string;
   _createdAt: string;
-  summary: {
-    children: {
-      _type: "span";
-      marks: string[];
-      text: string;
-      _key: string;
-    }[];
-    _type: "block";
-    style: string;
-    _key: string;
-    markDefs: {
-      _key: string;
-      _type: "link";
-      href: string;
-    }[];
-  }[];
+  
 };
 
 export type SingleBlogModel = {

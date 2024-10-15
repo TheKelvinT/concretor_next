@@ -34,13 +34,6 @@ const blog = {
       of: [{ type: "string" }],
     },
     {
-      name: "summary",
-      title: "Summary",
-      type: "array",
-
-      of: [{ type: "block" }],
-    },
-    {
       name: "content",
       title: "Content",
       type: "array",

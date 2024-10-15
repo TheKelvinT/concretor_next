@@ -428,7 +428,7 @@ export default function Home() {
                   <DescContainer>
                     <div className="truncate-text h-20">
                       <PortableText
-                        value={post?.summary ?? []}
+                        value={post?.content ?? []}
                         onMissingComponent={false}
                         components={serializer}
                       />
