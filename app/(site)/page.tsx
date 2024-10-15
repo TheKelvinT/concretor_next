@@ -405,7 +405,7 @@ export default function Home() {
             <h2 className="font-bold mb-10 text-center">Latest Articles</h2>
             <div className="flex gap-12 justify-center flex-wrap">
               {blogPosts.map((post, index) => (
-                <div className="max-w-[400px]" key={index}>
+                <div key={index} className="max-w-[400px]">
                   <div className="h-[300px] mt-2.5">
                     <img
                       src={post.image.url}
