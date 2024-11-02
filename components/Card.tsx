@@ -59,13 +59,13 @@ const Card: React.FC<CardProps> = ({ data }) => {
         >
           {data.title}
         </div>
-        <p className="text-[#383838] truncate-text-6">
+        <div className="text-[#383838] truncate-text-6">
           <PortableText
             value={data?.content}
             onMissingComponent={false}
             components={serializer}
           />
-        </p>
+        </div>
       </div>
     </div>
   )
