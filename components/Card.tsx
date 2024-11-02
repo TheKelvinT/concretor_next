@@ -48,7 +48,10 @@ const Card: React.FC<CardProps> = ({ data }) => {
       />
       <div className="md:w-2/3 md:pl-7 mt-6">
         <div className="flex flex-row gap-7 text-[#038885] mb-4">
-          {data.tags && data.tags.map((tag: any) => <p>{tag}</p>)}
+          {data.tags &&
+            data.tags.map((tag: any, index: number) => (
+              <p key={index}>{tag}</p>
+            ))}
         </div>
         <div
           className="font-bold text-[#01302F] text-2xl mb-4 cursor-pointer"
@@ -56,13 +59,13 @@ const Card: React.FC<CardProps> = ({ data }) => {
         >
           {data.title}
         </div>
-        <p className="text-[#383838] truncate-text-6">
+        <div className="text-[#383838] truncate-text-6">
           <PortableText
             value={data?.content}
             onMissingComponent={false}
             components={serializer}
           />
-        </p>
+        </div>
       </div>
     </div>
   )

@@ -1,4 +1,4 @@
-type HomeSection = {
+export type HomeSection = {
   image?: string
   title: string
   description: {
