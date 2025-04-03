@@ -136,7 +136,7 @@ export default function Home() {
                 <h2 className="font-bold drop-shadow-md">
                   {data?.homeSectionOne?.title}
                 </h2>
-                <p className="text-base ">
+                <p className="text-base hidden sm:block">
                   {data?.homeSectionOne?.description?.[0]?.children?.[0]?.text}
                 </p>
                 <div className="flex flex-col gap-4 md:flex-row justify-center mt-4">
