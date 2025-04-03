@@ -54,7 +54,7 @@ function Navbar() {
            
               </a>
             ))} */}
-                   <Image src={NewLogo} alt="logo" width={250} height={100}/>
+                  <a href="/"> <Image src={NewLogo} alt="logo" width={250} height={100}/></a>
           </div>
 
           {/* Hamburger Icon */}
@@ -84,7 +84,8 @@ function Navbar() {
                     {item.name}
                   </a>
                 ))} */}
-                     <Image src={NewLogo} alt="logo" width={250} height={100}/>
+                <a href="/"> <Image src={NewLogo} alt="logo" width={250} height={100}/></a>
+                </div>
               </div>
               <div className="flex items-center gap-x-10">
                 {rightNavigation.map((item) => (
@@ -123,7 +124,6 @@ function Navbar() {
           </div>
         )}
       </div>
-    </div>
   )
 }
 

@@ -4,8 +4,9 @@ import "../globals.css"
 import { Inter } from "next/font/google"
 import localFont from "next/font/local"
 import Navbar from "@/components/Navbar"
-import { useRouter } from "next/navigation"
+import { useRouter, usePathname } from "next/navigation"
 import Footer from "@/components/Footer"
+import { useEffect } from "react"
 
 // const inter = Inter({ subsets: ["latin"] })
 // const biro = localFont({
@@ -37,6 +38,17 @@ import Footer from "@/components/Footer"
 //   description: "Nota Cafe | Home is a Feeling",
 // }
 
+// ScrollToTop component
+function ScrollToTop() {
+  const pathname = usePathname();
+  
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [pathname]);
+  
+  return null;
+}
+
 export default function RootLayout({
   children,
 }: {
@@ -48,6 +60,7 @@ export default function RootLayout({
       <body
         className="font-montserrat"
       >
+        <ScrollToTop />
         <Navbar />
 
         <main className="min-h-screen">{children}</main>
