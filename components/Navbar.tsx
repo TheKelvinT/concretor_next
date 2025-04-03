@@ -2,7 +2,8 @@ import React, { useState, useRef, useEffect } from "react"
 import { Bars3Icon, XMarkIcon } from "@heroicons/react/24/outline"
 import { useRouter } from "next/navigation"
 import Button from "@/components/Button"
-
+import NewLogo from "../assets/logo-new.png"
+import Image from "next/image"
 const leftNavigation = [{ name: "CONCRETOR", href: "/" }]
 
 const rightNavigation = [
@@ -44,15 +45,16 @@ function Navbar() {
         <div className="relative flex items-center justify-between">
           {/* Left Navigation for mobile */}
           <div className="flex items-center md:hidden">
-            {leftNavigation.map((item) => (
+            {/* {leftNavigation.map((item) => (
               <a
                 key={item.name}
                 href={item.href}
                 className="text-3xl font-merriweather"
               >
-                {item.name}
+           
               </a>
-            ))}
+            ))} */}
+                   <Image src={NewLogo} alt="logo" width={250} height={100}/>
           </div>
 
           {/* Hamburger Icon */}
@@ -73,7 +75,7 @@ function Navbar() {
           <div className="hidden md:flex items-center flex-grow">
             <div className="flex-grow flex items-center justify-between">
               <div>
-                {leftNavigation.map((item) => (
+                {/* {leftNavigation.map((item) => (
                   <a
                     key={item.name}
                     href={item.href}
@@ -81,7 +83,8 @@ function Navbar() {
                   >
                     {item.name}
                   </a>
-                ))}
+                ))} */}
+                     <Image src={NewLogo} alt="logo" width={250} height={100}/>
               </div>
               <div className="flex items-center gap-x-10">
                 {rightNavigation.map((item) => (

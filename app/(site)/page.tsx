@@ -135,11 +135,11 @@ export default function Home() {
               </div>
             )}
             <div className="absolute inset-0 flex items-center justify-center bg-black bg-opacity-30 px-5">
-              <div className="text-white text-center">
+              <div className="text-white text-center w-2/3">
                 <h2 className="font-bold drop-shadow-md">
                   {data?.homeSectionOne?.title}
                 </h2>
-                <p className="text-base">
+                <p className="text-base ">
                   {data?.homeSectionOne?.description?.[0]?.children?.[0]?.text}
                 </p>
                 <div className="flex flex-col gap-4 md:flex-row justify-center mt-4">
@@ -408,7 +408,7 @@ export default function Home() {
             <h2 className="font-bold mb-10 text-center">Latest Articles</h2>
             <div className="flex gap-12 justify-center flex-wrap">
               {blogPosts.map((post, index) => (
-                <div className="max-w-[400px]">
+                <div className="max-w-[400px]" key={index}>
                   <div className="h-[300px] mt-2.5">
                     <img
                       src={post.image.url}
@@ -416,7 +416,7 @@ export default function Home() {
                     />
                   </div>
                   <div className="flex flex-row gap-x-7 mb-2.5 mt-2.5 text-[#038885]">
-                    {post.tags && post.tags.map((tag) => <p>{tag}</p>)}
+                    {post.tags && post.tags.map((tag, index) => <p key={index}>{tag}</p>)}
                   </div>
                   <div
                     className="text-2xl font-bold mb-5 cursor-pointer"
