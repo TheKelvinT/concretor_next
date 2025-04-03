@@ -188,11 +188,11 @@ export default function Contact() {
                 <Image
                   src={whatsapp}
                   alt="whatsapp"
-                  width={24}
-                  height={24}
+                  width={30}
+                  height={30}
                   className="object-contain w-6 h-6"
                 />
-                <p>+6012 234 4444</p>
+                <p className="mt-1">+60 17-700 7768</p>
               </div>
               {/* <div className="flex flex-row gap-5 w-1/2">
                 <p>Follow Us</p>

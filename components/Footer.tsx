@@ -3,12 +3,22 @@ import React from "react"
 import FooterLogo from "@/assets/footer-logo.png"
 import Image from "next/image"
 import Button from "./Button"
+import { useEffect, useState } from "react"
+import NewLogo from "../assets/logo-new.png"
 function Footer() {
+  const [currentYear, setCurrentYear] = useState("2024");
+  
+  useEffect(() => {
+    // Set the current year when component mounts
+    setCurrentYear(new Date().getFullYear().toString());
+  }, []);
+
   return (
     <footer className="bg-primary flex flex-col justify-center text-white items-center">
       <div className="footer-container max-w-[1440px] flex flex-col items-center text-center md:text-left md:flex-row md:items-start gap-8 md:gap-0">
         <div>
           <h2 className="text-[32px] font-merriweather font-bold">CONCRETOR</h2>
+          {/* <Image src={NewLogo} alt="logo" width={250} height={100}/> */}
           <p className="text-xl font-merriweather text-black">
             Engineering and Laboratories SDN BHD
           </p>
@@ -27,18 +37,19 @@ function Footer() {
           </div>
         </div>
 
+{/* 
         <div className="order-3 md:order-3">
           <p className="font-bold">Follow us</p>
-        </div>
+        </div> */}
 
-        <div className="order-2 md:order-4">
+          <div className="order-2 md:order-4">
           <p className="font-bold">Contact us</p>
           <br />
           <p>63, Jalan TPP 1/1, Taman</p>
           <p>Perindustrian Puchong, </p>
           <p>47100 Puchong, Selangor</p>
           <br />
-          <p>+6012 234 4444</p>
+          <p><a href="tel:+60177007768" className="hover:underline">+60 17-700 7768</a></p>
         </div>
       </div>
 
@@ -46,7 +57,7 @@ function Footer() {
 
       <div className="text-center font-monstserrat pb-4 mx-4 md:mx-0">
         <p>
-          2024 CONCRETOR Engineering and Laboratories Sdn Bhd © All Rights
+          {currentYear} CONCRETOR Engineering and Laboratories Sdn Bhd © All Rights
           Reserved.
         </p>
       </div>

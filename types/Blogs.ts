@@ -26,7 +26,7 @@ export type IBlogPost = {
   
 };
 
-export type SingleBlogModel = {
+ export type SingleBlogModel = {
   author?: string;
   title?: string;
   image?: string;
