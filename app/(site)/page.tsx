@@ -423,7 +423,7 @@ export default function Home() {
                     {post.title}
                   </div>
 
-                  <DescContainer>
+                  {/* <DescContainer>
                     <div className="truncate-text h-20">
                       <PortableText
                         value={post?.content ?? []}
@@ -431,7 +431,7 @@ export default function Home() {
                         components={serializer}
                       />
                     </div>
-                  </DescContainer>
+                  </DescContainer> */}
 
                   <div
                     className="text-[#038885] mt-2 cursor-pointer"

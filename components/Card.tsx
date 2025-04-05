@@ -3,6 +3,7 @@ import { PortableText } from "@portabletext/react"
 import urlBuilder from "@sanity/image-url"
 import { useRouter } from "next/navigation"
 import { IBlogPost } from "@/types/Blogs"
+import Button from "./Button"
 // Define the types for the Card props
 interface CardProps {
   data: IBlogPost
@@ -38,8 +39,9 @@ const Card: React.FC<CardProps> = ({ data }) => {
 
   return (
     <div
-      className="flex flex-col md:flex-row h-auto md:h-[300px] mx-4 md:mx-0 md:w-4/5 max-w-[1028px] border border-white bg-white py-4 px-4 rounded-lg"
+      className="flex flex-col cursor-pointer md:flex-row h-auto md:h-[300px] mx-4 md:mx-0 md:w-4/5 max-w-[1028px] border border-white bg-white py-4 px-4 rounded-lg"
       style={{ boxShadow: "0 4px 6px rgba(0, 0, 0, 0.25)" }}
+      onClick={handleBlogRedirect}
     >
       <img
         className="w-full md:w-1/3 h-auto rounded-lg object-cover min-h-[200px]"
@@ -59,13 +61,17 @@ const Card: React.FC<CardProps> = ({ data }) => {
         >
           {data.title}
         </div>
-        <div className="text-[#383838] truncate-text-6">
+        {/* <div className="text-[#383838] truncate-text-6">
           <PortableText
             value={data?.content}
             onMissingComponent={false}
             components={serializer}
           />
-        </div>
+        </div> */}
+      
+              {/* <Button title="Read More" onClick={handleBlogRedirect} />
+      */}
+    
       </div>
     </div>
   )
