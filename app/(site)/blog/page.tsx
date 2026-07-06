@@ -1,5 +1,9 @@
 import axios from "axios"
 import BlogPosts from "@/components/BlogPosts"
+
+// Revalidate the blog listing at most once every 60s so Sanity edits show up
+export const revalidate = 60
+
 const maxPostsPerPage = 5
 
 async function fetchBlogs() {
