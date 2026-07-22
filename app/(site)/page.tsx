@@ -277,7 +277,7 @@ export default function Home() {
               <div className="relative flex justify-center items-center aspect-[4/3]">
                 <Image
                   src={services7}
-                  alt="Services7 image"
+                  alt="General Renovation"
                   width={300}
                   height={200}
                   className="w-full h-full object-cover rounded-[16px]"
@@ -292,7 +292,7 @@ export default function Home() {
               <div className="relative flex justify-center items-center aspect-[4/3]">
                 <Image
                   src={services2}
-                  alt="Services2 image"
+                  alt="Civil Engineering"
                   width={300}
                   height={200}
                   className="w-full h-full object-cover rounded-[16px]"
@@ -307,14 +307,14 @@ export default function Home() {
               <div className="relative flex justify-center items-center aspect-[4/3]">
                 <Image
                   src={services1}
-                  alt="Services1 image"
+                  alt="Structural Repairing"
                   width={300}
                   height={200}
                   className="w-full h-full object-cover rounded-[16px]"
                 />
                 <div className="absolute inset-0 flex justify-center items-center bg-black bg-opacity-30 rounded-[16px]">
                   <p className="text-white font-bold text-xl">
-                    Structural Reparing
+                    Structural Repairing
                   </p>
                 </div>
               </div>
@@ -322,7 +322,7 @@ export default function Home() {
               <div className="relative flex justify-center items-center aspect-[4/3]">
                 <Image
                   src={services8}
-                  alt="Services8 image"
+                  alt="Waterproofing"
                   width={300}
                   height={200}
                   className="w-full h-full object-cover rounded-[16px]"
@@ -335,7 +335,7 @@ export default function Home() {
               <div className="relative flex justify-center items-center aspect-[4/3]">
                 <Image
                   src={services6}
-                  alt="Services6 image"
+                  alt="Building Assessment"
                   width={300}
                   height={200}
                   className="w-full h-full object-cover rounded-[16px]"
@@ -350,7 +350,7 @@ export default function Home() {
               <div className="relative flex justify-center items-center aspect-[4/3]">
                 <Image
                   src={services4}
-                  alt="Services4 image"
+                  alt="Project Management"
                   width={300}
                   height={200}
                   className="w-full h-full object-cover rounded-[16px]"
@@ -365,7 +365,7 @@ export default function Home() {
               <div className="relative flex justify-center items-center aspect-[4/3]">
                 <Image
                   src={services5}
-                  alt="Services5 image"
+                  alt="Interior and Exterior Refurbishing"
                   width={300}
                   height={200}
                   className="w-full h-full object-cover rounded-[16px]"
@@ -380,7 +380,7 @@ export default function Home() {
               <div className="relative flex justify-center items-center aspect-[4/3]">
                 <Image
                   src={services3}
-                  alt="Services3 image"
+                  alt="Design and Build Contractor"
                   width={300}
                   height={200}
                   className="w-full h-full object-cover rounded-[16px]"
