@@ -3,7 +3,7 @@ import { useState } from "react"
 import Card from "@/components/Card"
 import { RightOutlined, LeftOutlined } from "@ant-design/icons"
 
-const BlogPosts = ({ blogPosts, maxPostsPerPage }: any) => {
+const NewsletterPosts = ({ blogPosts, maxPostsPerPage }: any) => {
   const [currentPage, setCurrentPage] = useState(1)
   const totalPages = Math.ceil(blogPosts.length / maxPostsPerPage)
 
@@ -76,4 +76,4 @@ const BlogPosts = ({ blogPosts, maxPostsPerPage }: any) => {
   )
 }
 
-export default BlogPosts
+export default NewsletterPosts

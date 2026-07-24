@@ -1,11 +1,13 @@
 const blog = {
+  // NOTE: `name`/`_type` stays "blog" so existing Sanity documents keep loading.
+  // Only the display labels are renamed to "Newsletter".
   name: "blog",
-  title: "Blog - Blog Posts",
+  title: "Newsletter - Newsletter Posts",
   type: "document",
   fields: [
     {
       name: "title",
-      title: "Blog Title",
+      title: "Newsletter Title",
       type: "string",
     },
     {

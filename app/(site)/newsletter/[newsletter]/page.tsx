@@ -39,7 +39,7 @@ const SingleBlog = () => {
   const [shuffledBlogs, setShuffledBlogs] = useState<any>([])
   const [allPosts, setAllPosts] = useState<any>([])
   const router = useRouter()
-  const { blog } = useParams()
+  const { newsletter } = useParams()
 
   const fetchData = async () => {
     try {
@@ -48,7 +48,7 @@ const SingleBlog = () => {
       )
       setAllPosts(response)
       const matchedBlog = response.data.result.find(
-        (post: any) => post.slug === blog
+        (post: any) => post.slug === newsletter
       )
 
       if (matchedBlog) {
@@ -153,7 +153,7 @@ const SingleBlog = () => {
       <div className="relative single-blog">
         <div className=" mx-auto max-w-[1920px] h-[60vh] overflow-hidden z-0">
           {postData && (
-            <CustomImage Imgsrc={postData?.image.url} alt="Blog-hero" />
+            <CustomImage Imgsrc={postData?.image.url} alt="Newsletter-hero" />
           )}
         </div>
         <div className="flex flex-col">

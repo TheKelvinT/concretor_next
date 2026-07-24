@@ -9,7 +9,7 @@ const leftNavigation = [{ name: "CONCRETOR", href: "/" }]
 const rightNavigation = [
   { name: "About", href: "/about" },
   { name: "Services", href: "/#services" },
-  { name: "Blog", href: "/blog" },
+  { name: "Newsletter", href: "/newsletter" },
   { name: "Contact", href: "/contact" },
 ]
 

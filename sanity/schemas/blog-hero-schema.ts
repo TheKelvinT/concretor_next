@@ -1,6 +1,7 @@
 const blogHero = {
+  // NOTE: `name`/`_type` stays "blogHero" so existing Sanity documents keep loading.
   name: "blogHero",
-  title: "Blog - Main Banner",
+  title: "Newsletter - Main Banner",
   type: "document",
   fields: [
     {
@@ -19,16 +20,16 @@ const blogHero = {
     },
     {
       name: "header",
-      title: "Blog Section Header",
+      title: "Newsletter Section Header",
       type: "string",
       description: `Single sentence
        `,
     },
     {
       name: "blogDesc",
-      title: "Blog Section Description",
+      title: "Newsletter Section Description",
       type: "string",
-      description: `Blog section description text
+      description: `Newsletter section description text
        `,
     },
   ],

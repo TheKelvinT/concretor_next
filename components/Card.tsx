@@ -33,15 +33,15 @@ const Card: React.FC<CardProps> = ({ data }) => {
     },
   }
 
-  const handleBlogRedirect = () => {
-    router.push(`/blog/${data.slug}`)
+  const handleNewsletterRedirect = () => {
+    router.push(`/newsletter/${data.slug}`)
   }
 
   return (
     <div
       className="flex flex-col cursor-pointer md:flex-row h-auto md:h-[300px] mx-4 md:mx-0 md:w-4/5 max-w-[1028px] border border-white bg-white py-4 px-4 rounded-lg"
       style={{ boxShadow: "0 4px 6px rgba(0, 0, 0, 0.25)" }}
-      onClick={handleBlogRedirect}
+      onClick={handleNewsletterRedirect}
     >
       <img
         className="w-full md:w-1/3 h-auto rounded-lg object-cover min-h-[200px]"
@@ -57,7 +57,7 @@ const Card: React.FC<CardProps> = ({ data }) => {
         </div>
         <div
           className="font-bold text-[#01302F] text-2xl mb-4 cursor-pointer"
-          onClick={handleBlogRedirect}
+          onClick={handleNewsletterRedirect}
         >
           {data.title}
         </div>
@@ -69,7 +69,7 @@ const Card: React.FC<CardProps> = ({ data }) => {
           />
         </div> */}
       
-              {/* <Button title="Read More" onClick={handleBlogRedirect} />
+              {/* <Button title="Read More" onClick={handleNewsletterRedirect} />
       */}
     
       </div>

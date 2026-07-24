@@ -32,7 +32,7 @@ function Footer() {
           <div className="flex flex-col text-[14px] ">
             <br />
             <Link href="/about">About</Link>
-            <Link href="/blog">Blog</Link>
+            <Link href="/newsletter">Newsletter</Link>
             <Link href="/contact">Contact</Link>
           </div>
         </div>

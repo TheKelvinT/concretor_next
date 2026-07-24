@@ -66,8 +66,8 @@ export default function Home() {
     }
   }
 
-  const onClickBlog = (data: IBlogPost) => {
-    router.push(`/blog/${data.slug}`)
+  const onClickNewsletter = (data: IBlogPost) => {
+    router.push(`/newsletter/${data.slug}`)
   }
   const fetchData = async () => {
     const res = await axios.get(
@@ -418,7 +418,7 @@ export default function Home() {
                   </div>
                   <div
                     className="text-2xl font-bold mb-5 cursor-pointer"
-                    onClick={() => onClickBlog(post)}
+                    onClick={() => onClickNewsletter(post)}
                   >
                     {post.title}
                   </div>
@@ -435,7 +435,7 @@ export default function Home() {
 
                   <div
                     className="text-[#038885] mt-2 cursor-pointer"
-                    onClick={() => onClickBlog(post)}
+                    onClick={() => onClickNewsletter(post)}
                   >
                     Read More
                   </div>
