@@ -17,9 +17,9 @@ function Footer() {
     <footer className="bg-primary flex flex-col justify-center text-white items-center">
       <div className="footer-container max-w-[1440px] flex flex-col items-center text-center md:text-left md:flex-row md:items-start gap-8 md:gap-0">
         <div>
-          <h2 className="text-[32px] font-merriweather font-bold">CONCRETOR</h2>
+          <h2 className="text-[32px] font-bold">CONCRETOR</h2>
           {/* <Image src={NewLogo} alt="logo" width={250} height={100}/> */}
-          <p className="text-xl font-merriweather text-black">
+          <p className="text-xl text-black">
             Engineering and Laboratories SDN BHD
           </p>
           <p className="text-black">202201044579 (1490276-W)</p>

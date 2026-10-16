@@ -1,12 +1,4 @@
 "use client"
-import services1 from "@/assets/services1.jpg"
-import services2 from "@/assets/services2.jpg"
-import services3 from "@/assets/services3.jpg"
-import services4 from "@/assets/services4.jpg"
-import services5 from "@/assets/services5.jpg"
-import services6 from "@/assets/services6.jpg"
-import services7 from "@/assets/services7.jpg"
-import services8 from "@/assets/services8.jpg"
 import Button from "@/components/Button"
 import { IAboutPage } from "@/types/Faq"
 import { Spin } from "antd"
@@ -14,6 +6,7 @@ import axios from "axios"
 import Image from "next/image"
 import { useRouter } from "next/navigation"
 import { useEffect, useState } from "react"
+import { services } from "@/constant/services"
 
 type Props = {}
 
@@ -60,7 +53,7 @@ export default function About(props: Props) {
                   <p className="text-5xl md:text-6xl font-merriweather text-[#FF5757] mb-6">
                     {data?.aboutSectionOne?.title}
                   </p>
-                  <p className="text-4xl mb-6 font-bold text-white shadow-lg">
+                  <p className="text-4xl mb-6 font-bold text-white [text-shadow:0_2px_6px_rgba(0,0,0,0.5)]">
                     {
                       data?.aboutSectionOne?.description?.[0]?.children?.[0]
                         ?.text
@@ -132,123 +125,25 @@ export default function About(props: Props) {
             <h2 className="font-bold mb-10">Our Services</h2>
 
             <div className="grid grid-cols-1 gap-8 md:grid-cols-4 md:grid-rows-2 w-full ">
-              <div className="relative flex justify-center items-center aspect-[4/3]">
-                <Image
-                  src={services7}
-                  alt="Services7 image"
-                  width={300}
-                  height={200}
-                  className="w-full h-full object-cover rounded-[16px]"
-                />
-                <div className="absolute inset-0 flex justify-center items-center bg-black bg-opacity-30 rounded-[16px]">
-                  <p className="text-white font-bold text-xl">
-                    General Renovation
-                  </p>
+              {services.map((service) => (
+                <div
+                  key={service.title}
+                  className="relative flex justify-center items-center aspect-[4/3]"
+                >
+                  <Image
+                    src={service.image}
+                    alt={service.title}
+                    width={300}
+                    height={200}
+                    className="w-full h-full object-cover rounded-[16px]"
+                  />
+                  <div className="absolute inset-0 flex justify-center items-center bg-black bg-opacity-30 rounded-[16px] px-4">
+                    <p className="text-white font-bold text-xl text-center">
+                      {service.title}
+                    </p>
+                  </div>
                 </div>
-              </div>
-
-              <div className="relative flex justify-center items-center aspect-[4/3]">
-                <Image
-                  src={services2}
-                  alt="Services2 image"
-                  width={300}
-                  height={200}
-                  className="w-full h-full object-cover rounded-[16px]"
-                />
-                <div className="absolute inset-0 flex justify-center items-center bg-black bg-opacity-30 rounded-[16px]">
-                  <p className="text-white font-bold text-xl">
-                    Civil Engineering
-                  </p>
-                </div>
-              </div>
-
-              <div className="relative flex justify-center items-center aspect-[4/3]">
-                <Image
-                  src={services1}
-                  alt="Services1 image"
-                  width={300}
-                  height={200}
-                  className="w-full h-full object-cover rounded-[16px]"
-                />
-                <div className="absolute inset-0 flex justify-center items-center bg-black bg-opacity-30 rounded-[16px]">
-                  <p className="text-white font-bold text-xl">
-                    Structural Reparing
-                  </p>
-                </div>
-              </div>
-
-              <div className="relative flex justify-center items-center aspect-[4/3]">
-                <Image
-                  src={services8}
-                  alt="Services8 image"
-                  width={300}
-                  height={200}
-                  className="w-full h-full object-cover rounded-[16px]"
-                />
-                <div className="absolute inset-0 flex justify-center items-center bg-black bg-opacity-30 rounded-[16px]">
-                  <p className="text-white font-bold text-xl">Waterproofing</p>
-                </div>
-              </div>
-
-              <div className="relative flex justify-center items-center aspect-[4/3]">
-                <Image
-                  src={services6}
-                  alt="Services6 image"
-                  width={300}
-                  height={200}
-                  className="w-full h-full object-cover rounded-[16px]"
-                />
-                <div className="absolute inset-0 flex justify-center items-center bg-black bg-opacity-30 rounded-[16px]">
-                  <p className="text-white font-bold text-xl">
-                    Building Assessment
-                  </p>
-                </div>
-              </div>
-
-              <div className="relative flex justify-center items-center aspect-[4/3]">
-                <Image
-                  src={services4}
-                  alt="Services4 image"
-                  width={300}
-                  height={200}
-                  className="w-full h-full object-cover rounded-[16px]"
-                />
-                <div className="absolute inset-0 flex justify-center items-center bg-black bg-opacity-30 rounded-[16px]">
-                  <p className="text-white font-bold text-xl">
-                    Project Management
-                  </p>
-                </div>
-              </div>
-
-              <div className="relative flex justify-center items-center aspect-[4/3]">
-                <Image
-                  src={services5}
-                  alt="Services5 image"
-                  width={300}
-                  height={200}
-                  className="w-full h-full object-cover rounded-[16px]"
-                />
-                <div className="absolute inset-0 flex justify-center items-center bg-black bg-opacity-30 rounded-[16px]">
-                  <p className="text-white font-bold text-xl text-center">
-                    Interior and Exterior <br /> Refurbishing
-                  </p>
-                </div>
-              </div>
-
-              <div className="relative flex justify-center items-center aspect-[4/3]">
-                <Image
-                  src={services3}
-                  alt="Services3 image"
-                  width={300}
-                  height={200}
-                  className="w-full h-full object-cover rounded-[16px]"
-                />
-                <div className="absolute inset-0 flex justify-center items-center bg-black bg-opacity-30 rounded-[16px]">
-                  <p className="text-white font-bold text-xl text-center">
-                    Design and Build <br /> Contractor
-                  </p>
-                </div>
-              </div>
+              ))}
             </div>
 
             <p className="text-lg mt-10 mb-4 text-center">

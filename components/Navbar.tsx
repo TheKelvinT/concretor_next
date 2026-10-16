@@ -2,7 +2,7 @@ import React, { useState, useRef, useEffect } from "react"
 import { Bars3Icon, XMarkIcon } from "@heroicons/react/24/outline"
 import { useRouter } from "next/navigation"
 import Button from "@/components/Button"
-import NewLogo from "../assets/logo-new.png"
+import NewLogo from "../assets/logo-2.jpg"
 import Image from "next/image"
 const leftNavigation = [{ name: "CONCRETOR", href: "/" }]
 
@@ -54,7 +54,7 @@ function Navbar() {
            
               </a>
             ))} */}
-                  <a href="/"> <Image src={NewLogo} alt="logo" width={250} height={100}/></a>
+                  <a href="/"> <Image src={NewLogo} alt="CONCRETOR logo" width={147} height={80} className="h-20 w-auto"/></a>
           </div>
 
           {/* Hamburger Icon */}
@@ -84,7 +84,7 @@ function Navbar() {
                     {item.name}
                   </a>
                 ))} */}
-                <a href="/"> <Image src={NewLogo} alt="logo" width={250} height={100}/></a>
+                <a href="/"> <Image src={NewLogo} alt="CONCRETOR logo" width={147} height={80} className="h-20 w-auto"/></a>
                 </div>
               </div>
               <div className="flex items-center gap-x-10">
