@@ -6,7 +6,7 @@ import Map from "@/components/Map"
 import emailjs from "emailjs-com"
 import ContactUsPageIcon1 from "@/assets/ContactUsPageIcon1.png"
 import Image from "next/image"
-import whatsapp from "@/assets/whatsapp.png"
+import { EnvelopeIcon } from "@heroicons/react/24/outline"
 import facebook from "@/assets/facebook.png"
 import tiktok from "@/assets/tiktok.png"
 
@@ -48,6 +48,7 @@ export default function Contact() {
 
     try {
       setIsLoading(true)
+      setError(false)
 
       await emailjs.send(
         emailServiceId,
@@ -58,18 +59,19 @@ export default function Contact() {
 
       setIsLoading(false)
       setSuccess(true)
+      // Only clear the form once sent, so a failed attempt keeps the user's input
+      setFormData({
+        name: "",
+        contactNumber: "",
+        email: "",
+        enquiry: "",
+      })
     } catch (error) {
       console.error("Failed to send email:", error)
       setIsLoading(false)
+      setSuccess(false)
       setError(true)
     }
-
-    setFormData({
-      name: "",
-      contactNumber: "",
-      email: "",
-      enquiry: "",
-    })
   }
 
   const handleSubmit = (e: { preventDefault: () => void }) => {
@@ -185,14 +187,10 @@ export default function Contact() {
             </div>
             <div className="flex flex-col md:flex-row justify-start gap-4 md:gap-10">
               <div className="flex flex-row gap-6 w-1/2 mb-4">
-                <Image
-                  src={whatsapp}
-                  alt="whatsapp"
-                  width={30}
-                  height={30}
-                  className="object-contain w-6 h-6"
-                />
-                <p className="mt-1">+60 17-700 7768</p>
+                <EnvelopeIcon className="w-6 h-6 shrink-0" aria-hidden="true" />
+                <a href="mailto:concretor63@gmail.com" className="hover:underline">
+                  concretor63@gmail.com
+                </a>
               </div>
               {/* <div className="flex flex-row gap-5 w-1/2">
                 <p>Follow Us</p>

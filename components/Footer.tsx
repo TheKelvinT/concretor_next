@@ -49,7 +49,7 @@ function Footer() {
           <p>Perindustrian Puchong, </p>
           <p>47100 Puchong, Selangor</p>
           <br />
-          <p><a href="tel:+60177007768" className="hover:underline">+60 17-700 7768</a></p>
+          <p><a href="mailto:concretor63@gmail.com" className="hover:underline">concretor63@gmail.com</a></p>
         </div>
       </div>
 
