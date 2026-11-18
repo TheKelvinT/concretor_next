@@ -6,7 +6,7 @@ import Map from "@/components/Map"
 import emailjs from "emailjs-com"
 import ContactUsPageIcon1 from "@/assets/ContactUsPageIcon1.png"
 import Image from "next/image"
-import { EnvelopeIcon } from "@heroicons/react/24/outline"
+import { EnvelopeIcon, PhoneIcon } from "@heroicons/react/24/outline"
 import facebook from "@/assets/facebook.png"
 import tiktok from "@/assets/tiktok.png"
 
@@ -186,7 +186,13 @@ export default function Contact() {
               </div>
             </div>
             <div className="flex flex-col md:flex-row justify-start gap-4 md:gap-10">
-              <div className="flex flex-row gap-6 w-1/2 mb-4">
+              <div className="flex flex-row gap-6 md:w-1/2 mb-4">
+                <PhoneIcon className="w-6 h-6 shrink-0" aria-hidden="true" />
+                <a href="tel:+60183260609" className="hover:underline">
+                  +60 18-326 0609
+                </a>
+              </div>
+              <div className="flex flex-row gap-6 md:w-1/2 mb-4">
                 <EnvelopeIcon className="w-6 h-6 shrink-0" aria-hidden="true" />
                 <a href="mailto:concretor63@gmail.com" className="hover:underline">
                   concretor63@gmail.com

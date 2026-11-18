@@ -142,7 +142,7 @@ function ContactSection() {
 
             <div className="flex flex-col space-y-1 pb-12">
               <h5 className="text-2xl font-gothic">Mobile</h5>
-              <p className="text-sm">+60 17 489 1189</p>
+              <p className="text-sm">+60 18-326 0609</p>
             </div>
             <div className="flex flex-col space-y-1">
               <h5 className="text-2xl font-gothic">Address</h5>
